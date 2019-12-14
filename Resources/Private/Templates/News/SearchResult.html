@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:is="http://typo3.org/ns/NITSAN/NsNewsAdvancedsearch/ViewHelpers"	
+	  data-namespace-typo3-fluid="true">
+	<f:layout name="General" />
+	<!--
+		=====================
+			Templates/News/SearchResult.html
+	-->
+
+	<f:section name="content">
+		<div class="news-search-result">
+			<f:if condition="{search}">				
+				<f:if condition="{news}">
+					<f:then>
+						<div class="count-msg">
+							<f:translate key="search_text" extensionName='ns_news_advancedsearch' arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
+						</div>
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem">
+									<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+								</f:for>
+							</f:then>
+							<f:else>
+								<is:widget.paginate objects="{news}" as="paginatedNews" configuration="{itemsPerPage: settings.list.paginate.itemsPerPage, insertAbove: settings.list.paginate.insertAbove, insertBelow: settings.list.paginate.insertBelow, maximumNumberOfLinks: settings.list.paginate.maximumNumberOfLinks, addQueryStringMethod: 'POST,GET'}">
+									<f:for each="{paginatedNews}" as="newsItem" iteration="iterator">
+										<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+									</f:for>
+								</is:widget.paginate>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<div class="no-news-found">
+							<f:translate key="search-noresult" />
+						</div>
+					</f:else>
+				</f:if>
+			</f:if>
+		</div>
+	</f:section>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-09-29T11:30:00Z" product-name="ns_news_advancedsearch">
+		<header/>
+		<body>
+			<trans-unit id="category_selection">
+				<target>Erweiterte Sucheinstellungen</target>
+			</trans-unit>
+			<trans-unit id="advanced_search">
+				<target>Erweiterte Suche aktivieren (nur für Suchformular)</target>
+			</trans-unit>
+			<trans-unit id="select_category_page">
+				<target>Legen Sie die Kategorie-Speicherseite fest</target>
+			</trans-unit>
+			<trans-unit id="search_category">
+				<target>Kategorieeinstellungen</target>
+			</trans-unit>
+			<trans-unit id="search_category.1">
+				<target>Zeige alle Einträge aus allen Kategorien</target>
+			</trans-unit>
+			<trans-unit id="search_category.2">
+				<target>Zeigen alle Einträge aus den ausgewählten Kategorien</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,58 @@
+<extra>
+    <ROOT>
+        <TCEforms>
+            <sheetTitle>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:category_selection</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+            <settings.advancedSearch>
+                <TCEforms>
+                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:advanced_search</label>
+                    <displayCond>FIELD:sDEF.switchableControllerActions:=:News->searchForm</displayCond>
+                    <onChange>reload</onChange>
+                    <config>
+                        <type>check</type>
+                    </config>
+                </TCEforms>
+            </settings.advancedSearch>
+
+            <settings.searchCategory>
+                <TCEforms>
+                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category</label>
+                    <onChange>reload</onChange>
+                    <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
+                    <config>
+                        <type>radio</type>
+                        <items type="array">
+                            <numIndex index="0" type="array">
+                                <numIndex index="0">LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category.1</numIndex>
+                                <numIndex index="1">all</numIndex>
+                            </numIndex>
+                            <numIndex index="1" type="array">
+                                <numIndex index="0">LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category.2</numIndex>
+                                <numIndex index="1">selected</numIndex>
+                            </numIndex>
+                        </items>
+                        <default>all</default>
+                    </config>
+                </TCEforms>
+            </settings.searchCategory>
+
+            <settings.advancedSearchCategoryPage>
+                <TCEforms>
+                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:select_category_page</label>
+                    <onChange>reload</onChange>
+                    <displayCond>FIELD:settings.searchCategory:=:selected</displayCond>
+                    <config>
+                        <type>group</type>
+                        <internal_type>db</internal_type>
+                        <allowed>pages</allowed>
+                        <size>1</size>
+                        <maxitems>1</maxitems>
+                        <minitems>1</minitems>
+                    </config>
+                </TCEforms>
+            </settings.advancedSearchCategoryPage>
+        </el>
+    </ROOT>
+</extra>

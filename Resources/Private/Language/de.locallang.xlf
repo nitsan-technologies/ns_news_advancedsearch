@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-09-29T11:30:00Z" product-name="ns_news_advancedsearch">
+		<header/>
+		<body>
+			<trans-unit id="search_sys_category">
+				<target>Suchen Sie nach folgenden Kategorien</target>
+			</trans-unit>
+			<trans-unit id="search_teaser">
+				<target>Suche nach dem News Teaser</target>
+			</trans-unit>
+			<trans-unit id="search_title">
+				<target>Suche nach dem Nachrichtentitel</target>
+			</trans-unit>
+			<trans-unit id="search_text">
+				<target>Es gibt %1$s Ergebnisse in Ihrer Suchkombination.</target>
+			</trans-unit>
+			<trans-unit id="search_start">
+				<target>Starten Sie Serch</target>
+			</trans-unit>
+			<trans-unit id="reset">
+				<target>zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="search_all_categories">
+				<target>Zeige alle Einträge aus allen Kategorien</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

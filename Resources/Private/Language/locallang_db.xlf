@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-29T11:30:00Z" product-name="ns_news_advancedsearch">
+		<header/>
+		<body>
+			<trans-unit id="category_selection">
+				<source>Advanced Search Settings</source>
+			</trans-unit>
+			<trans-unit id="advanced_search">
+				<source>Enable Advanced Search (For Search Form Only)</source>
+			</trans-unit>
+			<trans-unit id="select_category_page">
+				<source>Set category storage page</source>
+			</trans-unit>
+			<trans-unit id="search_category">
+				<source>Select category list type</source>
+			</trans-unit>
+			<trans-unit id="search_category.1">
+				<source>Show all items from all sys_categories</source>
+			</trans-unit>
+			<trans-unit id="search_category.2">
+				<source>Show all items from selected sys_categories folder</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
