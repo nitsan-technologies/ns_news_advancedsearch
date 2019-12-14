@@ -31,13 +31,11 @@ class FlexFormHook
         if (is_array($getVars['tt_content'])) {
             $item = array_keys($getVars['tt_content']);
             $row = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tt_content', (int)$item[0]);
-            if(!empty($row)){
-                $ffXml = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($row['pi_flexform']);
-                $file = PATH_site . 'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
-                $content = file_get_contents($file);
-                if ($content) {
-                    $dataStructure['sheets']['extraEntry'] = GeneralUtility::xml2array($content);
-                }
+            $ffXml = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($row['pi_flexform']);
+            $file = PATH_site . 'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
+            $content = file_get_contents($file);
+            if ($content) {
+                $dataStructure['sheets']['extraEntry'] = GeneralUtility::xml2array($content);
             }
         } 
      }
