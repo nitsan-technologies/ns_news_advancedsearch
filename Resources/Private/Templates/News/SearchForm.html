@@ -14,12 +14,6 @@
 								<div class="form-group">
 									<label for="news-category"><f:translate id='search_sys_category' extensionName='ns_news_advancedsearch' />:</label>
 									<div class="row">
-										<div class="col-sm-12">
-											<label for="check-0">
-												<f:form.checkbox property="category" id="check-0" value="0"/>
-													<f:translate id='search_all_categories' extensionName='ns_news_advancedsearch' />
-											</label>
-										</div>
 										<f:for each="{settings.searchCategories}" as="category" iteration="index">
 											<div class="col-sm-4">
 												<label for="check{category.uid}">
