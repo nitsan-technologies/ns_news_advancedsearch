@@ -1,7 +1,7 @@
 plugin.tx_news {
 	view {
 		templateRootPaths {
-			1 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
+			20 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
 		}
 	}
 }
