@@ -2,12 +2,14 @@
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
-// For 7x Flexform Hook
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_befunc.php']['getFlexFormDSClass'][]
-  = \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
-// For 8x & 9x Flexform Hook
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['flexParsing'][]
-   = \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
+if (version_compare(TYPO3_branch, '8.0', '<')) {
+	// For 7x Flexform Hook
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_befunc.php']['getFlexFormDSClass'][] = \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
+} else {
+	// For 8x & 9x Flexform Hook
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][\TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools::class]['flexParsing'][]
+	   = \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
+}
 
 // Add Custom fields to search Model
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes']['Domain/Model/Dto/Search'][] = 'ns_news_advancedsearch';

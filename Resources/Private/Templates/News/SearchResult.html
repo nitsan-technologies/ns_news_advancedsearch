@@ -22,7 +22,14 @@
 								</f:for>
 							</f:then>
 							<f:else>
-								<is:widget.paginate objects="{news}" as="paginatedNews" configuration="{itemsPerPage: settings.list.paginate.itemsPerPage, insertAbove: settings.list.paginate.insertAbove, insertBelow: settings.list.paginate.insertBelow, maximumNumberOfLinks: settings.list.paginate.maximumNumberOfLinks, addQueryStringMethod: 'POST,GET'}">
+								<is:widget.paginate objects="{news}" 
+													as="paginatedNews" 
+													configuration="{
+														itemsPerPage: settings.list.paginate.itemsPerPage,
+														insertAbove: settings.list.paginate.insertAbove,
+														insertBelow: settings.list.paginate.insertBelow,
+														maximumNumberOfLinks: settings.list.paginate.maximumNumberOfLinks,
+														addQueryStringMethod: 'POST,GET'}">
 									<f:for each="{paginatedNews}" as="newsItem" iteration="iterator">
 										<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
 									</f:for>

@@ -17,11 +17,12 @@ class Repository {
      * @param array $constraints
      */
     protected function updateConstraints($demand, $respectEnableFields, \TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints) {
-        if($_REQUEST['tx_news_pi1']['search']['category'] || $_REQUEST['tx_news_pi1']['search']['teaser'] || $_REQUEST['tx_news_pi1']['search']['title']){                    
+        $actionRequest = GeneralUtility::_GP('tx_news_pi1')['search'];
+        if($actionRequest['category'] || $actionRequest['teaser'] || $actionRequest['title']){                    
             
             // Filter Categories
-            if($_REQUEST['tx_news_pi1']['search']['category']){
-                $searchCategories = $_REQUEST['tx_news_pi1']['search']['category'];
+            if($actionRequest['category']){
+                $searchCategories = $actionRequest['category'];
                 foreach ($searchCategories as $categories) {
                     if($categories==0){
                         $constCategory[]=$query->greaterThan('categories', 0);
@@ -33,13 +34,13 @@ class Repository {
             }
 
             // Filter Teaser Text
-            if($_REQUEST['tx_news_pi1']['search']['teaser']){
-                $constraints[] = $query->like('teaser', '%' . $_REQUEST['tx_news_pi1']['search']['teaser'] . '%');   
+            if($actionRequest['teaser']){
+                $constraints[] = $query->like('teaser', '%' . $actionRequest['teaser'] . '%');   
             }
 
             // Filter Title Text
-            if($_REQUEST['tx_news_pi1']['search']['title']){
-                $constraints[] = $query->like('title', '%' . $_REQUEST['tx_news_pi1']['search']['title'] . '%');
+            if($actionRequest['title']){
+                $constraints[] = $query->like('title', '%' . $actionRequest['title'] . '%');
             }
         }
     }
