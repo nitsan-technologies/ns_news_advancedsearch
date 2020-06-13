@@ -8,7 +8,7 @@
 		<div class="news-search-form">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" class="ns-news-advancedsearch" >
+					<f:form object="{search}" method="GET" name="search" pageUid="{settings.listPid}" class="ns-news-advancedsearch">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">

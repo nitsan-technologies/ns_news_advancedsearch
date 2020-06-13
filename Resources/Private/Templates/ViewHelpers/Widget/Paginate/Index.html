@@ -42,7 +42,7 @@
 					<li>
 						<f:if condition="{page.number} > 1">
 							<f:then>
-								<f:widget.link arguments="{currentPage: page.number}" addQueryStringMethod="{configuration.addQueryStringMethod}" section="{configuration.section}">{page.number}</f:widget.link>
+								<f:widget.link useCacheHash="1" arguments="{currentPage: page.number}" addQueryStringMethod="{configuration.addQueryStringMethod}" section="{configuration.section}">{page.number}</f:widget.link>
 							</f:then>
 							<f:else>
 								<f:widget.link addQueryStringMethod="{configuration.addQueryStringMethod}" section="{configuration.section}">{page.number}</f:widget.link>
