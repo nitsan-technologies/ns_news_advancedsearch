@@ -32,7 +32,7 @@
 								<label for="news-teaser"><f:translate id='search_teaser' extensionName='ns_news_advancedsearch' />:</label>
 								<f:form.textfield id="news-teaser" property="teaser" class="form-control"/>
 							</div>
-							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary btn-submit"/><f:form.button type="reset" name="reset" class="btn btn-secondary" value="reset">{f:translate(key:'reset', extensionName: 'ns_news_advancedsearch')}</f:form.button>
+							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary btn-submit"/><f:form.button type="reset" name="reset" class="btn btn-secondary" value="reset" additionalAttributes="{'onclick': 'window.location = window.location.href;'}" >{f:translate(key:'reset', extensionName: 'ns_news_advancedsearch')}</f:form.button>
 						</fieldset>
 					</f:form>
 				</f:then>
