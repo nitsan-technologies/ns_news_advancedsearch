@@ -16,10 +16,10 @@
 				<target>Es gibt %1$s Ergebnisse in Ihrer Suchkombination.</target>
 			</trans-unit>
 			<trans-unit id="search_start">
-				<target>Starten Sie Serch</target>
+				<target>Suche starten</target>
 			</trans-unit>
 			<trans-unit id="reset">
-				<target>zurücksetzen</target>
+				<target>Zurücksetzen</target>
 			</trans-unit>
 			<trans-unit id="search_all_categories">
 				<target>Zeige alle Einträge aus allen Kategorien</target>
