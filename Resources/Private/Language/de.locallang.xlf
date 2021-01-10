@@ -22,7 +22,7 @@
 				<target>Zurücksetzen</target>
 			</trans-unit>
 			<trans-unit id="search_all_categories">
-				<target>Zeige alle Einträge aus allen Kategorien</target>
+				<target>Einträge aus Kategorien anzeigen</target>
 			</trans-unit>
 		</body>
 	</file>
