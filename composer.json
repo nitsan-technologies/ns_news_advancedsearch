@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-news-advancedsearch",
   "type": "typo3-cms-extension",
-  "description": "Do you want more rich search features into your favourite EXT:news? By installing this extension, you can search by category, title, teaser etc. Know  more in manual. Live-Demo: https://demo.t3terminal.com/t3t-extensions/news-comments-1/news-advance-search/ You can download PRO version for more-features & free-support at https://t3terminal.com/advanced-search-for-typo3-news-extension/",
+  "description": "Do you want more rich search features into your favourite EXT:news? By installing this extension, you can search by category, title, teaser etc. Know  more in manual. Live-Demo: https://demo.t3terminal.com//t3t-extensions/news-advancedsearch You can download PRO version for more-features & free-support at https://t3terminal.com/advanced-search-typo3-news-extension",
   "keywords": [
     "News",
     "Search",
@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "require": {
-    "typo3/cms-core": ">=6.0.0",
+    "typo3/cms-core": ">=6.2.0",
     "georgringer/news": ">=3.0.0"
   },
   "autoload": {
