@@ -30,7 +30,7 @@
     }
   },
   "replace": {
-      "nitsan/ns-news-advancedsearch": "self.version"
+      "typo3-ter/ns-news-advancedsearch": "self.version"
   },
   "extra": {
       "typo3/cms": {
