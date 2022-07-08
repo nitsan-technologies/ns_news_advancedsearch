@@ -7,33 +7,31 @@ if (form) {
 	});
 }
 
-
 function sendData() {
-	$.ajax({
-      method: 'post',
-      dataType: 'text',
-      url: form.getAttribute('action'),
-      data:  $('form').serialize(),
-      success: function success(data) {
-	      var dom = document.createElement('div');
-		    dom.innerHTML = data;
-		    let app = dom.querySelector('.advancedsearch-result');
-		    let docs = document.querySelector('.advancedsearch-result');
-		    docs.innerHTML = "";
-		    docs.appendChild(app);
-			    $(".paginate").click(function(e){
-						e.preventDefault();
-						var $this = $(this);
-						var pagenum = $(this).attr('name');
-						var pageno = document.createElement("input");
-						pageno.setAttribute("type", "hidden");
-						pageno.setAttribute("name", "tx_news_pi1[currentPage]");
-						pageno.setAttribute("value",pagenum);
-						var form = document.getElementById("advancedsearch");
-						form.append(pageno);
-						sendData();
-					});
-      }
-    });
+  const XHR = new XMLHttpRequest();
+  const FD = new FormData(form);
+  XHR.addEventListener("load", function (event) {
+    var dom = document.createElement('div');
+    dom.innerHTML = event.target.responseText;
+    let app = dom.querySelector('.news-search-result');
+    let docs = document.querySelector('.news-search-result');
+    docs.innerHTML = "";
+    docs.appendChild(app);
+    let paginate = document.querySelectorAll('.paginate');
+    paginate.forEach(($ele) => {
+	    $ele.addEventListener('click', (e) => {
+	  	  e.preventDefault();
+      	  var pagenum = $ele.getAttribute('name');
+  		  var pageno = document.createElement("input");
+		  pageno.setAttribute("type", "hidden");
+		  pageno.setAttribute("name", "tx_news_pi1[currentPage]");
+		  pageno.setAttribute("value",2);
+		  var form = document.getElementById("advancedsearch");
+		  form.append(pageno);
+      	  sendData();
+	    });
+	  });
+  });
+  XHR.open("POST", form.getAttribute('action'));
+  XHR.send(FD);
 }
-
