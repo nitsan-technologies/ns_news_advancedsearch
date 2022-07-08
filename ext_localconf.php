@@ -20,3 +20,8 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Controller/NewsController.php']['ove
 // Modify Repository query for advanced filter
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']['ns_news_advancedsearch'] 
 		= 'NITSAN\\NsNewsAdvancedsearch\\Hooks\\Repository->modify';
+
+//Extending News Controller
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\GeorgRinger\News\Controller\NewsController::class] = [
+    'className' => \NITSAN\NsNewsAdvancedsearch\Controller\NewsController::class
+];
