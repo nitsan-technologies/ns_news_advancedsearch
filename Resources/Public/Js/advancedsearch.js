@@ -21,15 +21,15 @@ function sendData() {
     paginate.forEach(($ele) => {
 	    $ele.addEventListener('click', (e) => {
 	  	  e.preventDefault();
-      	  var pagenum = $ele.getAttribute('name');
+      	var pagenum = $ele.getAttribute('name');
   		  var pageno = document.createElement("input");
-		  pageno.setAttribute("type", "hidden");
-		  pageno.setAttribute("name", "tx_news_pi1[currentPage]");
-		  pageno.setAttribute("value",2);
-		  var form = document.getElementById("advancedsearch");
-		  form.append(pageno);
-      	  sendData();
-	    });
+		  	pageno.setAttribute("type", "hidden");
+		  	pageno.setAttribute("name", "tx_news_pi1[currentPage]");
+		  	pageno.setAttribute("value",pagenum);
+		  	var form = document.getElementById("advancedsearch");
+		  	form.append(pageno);
+      	  	sendData();
+	    	});
 	  });
   });
   XHR.open("POST", form.getAttribute('action'));

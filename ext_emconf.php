@@ -15,8 +15,8 @@ $EM_CONF['ns_news_advancedsearch'] = [
     'version' => '2.1.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '6.2.0-11.5.99',
-            'news' => '3.0.0-9.9.99',
+            'typo3' => '10.0.0-11.5.99',
+            'news' => '9.0.0-9.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
