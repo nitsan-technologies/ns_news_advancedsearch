@@ -7,15 +7,21 @@
 	-->
 	<f:section name="content">
 		<div class="news-search-result">
-			<f:if condition="{search}">				
+			<f:if condition="{search}">
 				<f:if condition="{news}">
 					<f:then>
 						<div class="count-msg">
-							<f:translate key="search_text" extensionName='ns_news_advancedsearch' arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
+							<f:translate key="search-text" arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
 						</div>
-						<f:for each="{news}" as="newsItem">
+						<f:if condition="{settings.search.paginate.insertAbove}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
+						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
 							<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
 						</f:for>
+						<f:if condition="{settings.search.paginate.insertBelow}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
 					</f:then>
 					<f:else>
 						<div class="no-news-found">
