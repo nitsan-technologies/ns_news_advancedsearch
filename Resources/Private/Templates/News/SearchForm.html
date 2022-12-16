@@ -10,7 +10,7 @@
 		<div class="news-search-form">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<n:searchForm object="{search}" name="search" pageUid="{settings.listPid}" method="get">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
@@ -36,10 +36,10 @@
 							</div>
 							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary btn-submit"/><f:form.button type="reset" name="reset" class="btn btn-secondary" value="reset" additionalAttributes="{'onclick': 'window.location = window.location.href;'}" >{f:translate(key:'reset', extensionName: 'ns_news_advancedsearch')}</f:form.button>
 						</fieldset>
-					</n:searchForm>
+					</f:form>
 				</f:then>
 				<f:else>
-					<n:searchForm object="{search}" name="search" pageUid="{settings.listPid}" method="get">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get">
 						<fieldset>
 							<div class="form-group">
 								<label for="news-subject"><f:translate key="search-subject" /></label>
@@ -59,7 +59,7 @@
 							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary"/>
 
 						</fieldset>
-					</n:searchForm>
+					</f:form>
 				</f:else>
 			</f:if>
 		</div>
