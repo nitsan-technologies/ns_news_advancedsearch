@@ -10,7 +10,7 @@
 		<div class="news-search-form">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="post">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
@@ -39,7 +39,7 @@
 					</f:form>
 				</f:then>
 				<f:else>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="post">
 						<fieldset>
 							<div class="form-group">
 								<label for="news-subject"><f:translate key="search-subject" /></label>
