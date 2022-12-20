@@ -6,3 +6,4 @@ plugin.tx_news {
 	}
 }
 page.includeCSS.advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
+page.includeJSFooter.advancesearchJs = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
