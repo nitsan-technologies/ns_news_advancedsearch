@@ -16,9 +16,18 @@
 						<f:if condition="{settings.search.paginate.insertAbove}">
 							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
 						</f:if>
-						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
-							<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
-						</f:for>
+						<f:if condition="{pagination.paginator.paginatedItems}">
+							<f:then>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+								</f:for>
+							</f:then>
+							<f:else>
+								<f:for each="{news}" as="newsItem" iteration="iterator">
+									<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+								</f:for>
+							</f:else>
+						</f:if>
 						<f:if condition="{settings.search.paginate.insertBelow}">
 							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
 						</f:if>
