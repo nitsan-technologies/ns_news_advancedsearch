@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
 
 /***
@@ -16,16 +17,16 @@ namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
  * Class ExtendSearch
  *
  */
-class Search extends \GeorgRinger\News\Domain\Model\Dto\Search {
-
-	/**
+class Search extends \GeorgRinger\News\Domain\Model\Dto\Search
+{
+    /**
      * Search teaser
      *
      * @var string
      */
     protected $teaser;
 
-	/**
+    /**
      * Search title
      *
      * @var string
@@ -39,7 +40,7 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search {
      */
     public $category = null;
 
-	/**
+    /**
      * __construct
      */
     public function __construct()
@@ -78,31 +79,35 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search {
         $this->category = $category;
     }
 
-	/**
-	 * @param array $teaser
-	 */
-	public function setTeaser($teaser) {
-		$this->teaser = $teaser;
-	}
+    /**
+     * @param string $teaser
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
+    }
 
-	/**
-	 * @return array
-	 */
-	public function getTeaser() {
-		return $this->teaser;
-	}
+    /**
+     * @return string
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
 
-	/**
-	 * @param array $title
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * @return array
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }

@@ -1,46 +1,38 @@
 <extra>
     <ROOT>
-        <TCEforms>
-            <sheetTitle>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:category_selection</sheetTitle>
-        </TCEforms>
+        <sheetTitle>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:category_selection</sheetTitle>
         <type>array</type>
         <el>
             <settings.advancedSearch>
-                <TCEforms>
-                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:advanced_search</label>
-                    <displayCond>FIELD:sDEF.switchableControllerActions:=:News->searchForm</displayCond>
+                    <label>Enable Advanced Search (For Search Form Only)</label>
                     <onChange>reload</onChange>
                     <config>
                         <type>check</type>
                     </config>
-                </TCEforms>
             </settings.advancedSearch>
 
             <settings.searchCategory>
-                <TCEforms>
-                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category</label>
+                    <label>search_category</label>
                     <onChange>reload</onChange>
                     <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
                     <config>
                         <type>radio</type>
                         <items type="array">
                             <numIndex index="0" type="array">
-                                <numIndex index="0">LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category.1</numIndex>
-                                <numIndex index="1">all</numIndex>
+                                <label>Show all items from all sys_categories</label>
+                                <value>all</value>
                             </numIndex>
                             <numIndex index="1" type="array">
-                                <numIndex index="0">LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category.2</numIndex>
-                                <numIndex index="1">selected</numIndex>
+                                <label>Show all items from selected sys_categories folder</label>
+                                <value>selected</value>
                             </numIndex>
                         </items>
                         <default>all</default>
                     </config>
-                </TCEforms>
             </settings.searchCategory>
 
             <settings.advancedSearchCategoryPage>
-                <TCEforms>
-                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:select_category_page</label>
+                    <label>select_category_page</label>
                     <onChange>reload</onChange>
                     <displayCond>FIELD:settings.searchCategory:=:selected</displayCond>
                     <config>
@@ -51,7 +43,6 @@
                         <maxitems>1</maxitems>
                         <minitems>1</minitems>
                     </config>
-                </TCEforms>
             </settings.advancedSearchCategoryPage>
         </el>
     </ROOT>
