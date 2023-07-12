@@ -24,14 +24,14 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search
      *
      * @var string
      */
-    protected $teaser;
+    protected string $teaser = '';
 
     /**
      * Search title
      *
      * @var string
      */
-    protected $title;
+    protected string $title = '';
 
     /**
      * Search category

@@ -30,16 +30,16 @@ class NewsControllerSettings
                 ->where($queryBuilder->expr()->eq('pid', $categoryStorage))
                 ->andwhere($queryBuilder->expr()->eq('sys_language_uid', $languageid))
                 ->orderBy('sorting')
-                ->execute()
-                ->fetchAll();
+                ->executeQuery()
+                ->fetchAllAssociative();
             } else {
                 $searchCategories = $queryBuilder
                 ->select('*')
                 ->from('sys_category')
                 ->where($queryBuilder->expr()->eq('sys_language_uid', $languageid))
                 ->orderBy('sorting')
-                ->execute()
-                ->fetchAll();
+                ->executeQuery()
+                ->fetchAllAssociative();
             }
 
             if(!empty($searchCategories)) {

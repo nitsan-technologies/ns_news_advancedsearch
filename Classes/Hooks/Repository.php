@@ -20,9 +20,8 @@ class Repository
      */
     protected function updateConstraints($demand, $respectEnableFields, \TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints)
     {
-        $actionRequest = GeneralUtility::_GP('tx_news_pi1')['search'] ?? null;
+        $actionRequest = GeneralUtility::_GET('tx_news_pi1')['search'] ?? null;
         if(isset($actionRequest)) {
-
             $actionRequest['category'] = $actionRequest['category'] ?? '0';
             $actionRequest['teaser'] = $actionRequest['teaser'] ?? '';
             $actionRequest['title'] = $actionRequest['title'] ?? '';
