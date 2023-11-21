@@ -8,7 +8,6 @@
             <settings.advancedSearch>
                 <TCEforms>
                     <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:advanced_search</label>
-                    <displayCond>FIELD:sDEF.switchableControllerActions:=:News->searchForm</displayCond>
                     <onChange>reload</onChange>
                     <config>
                         <type>check</type>

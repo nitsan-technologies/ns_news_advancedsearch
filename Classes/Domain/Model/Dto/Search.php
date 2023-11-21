@@ -62,7 +62,7 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search {
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\News\Domain\Model\Category> $category
      */
-    public function geCategory()
+    public function getCategory()
     {
         return $this->category;
     }
@@ -73,7 +73,7 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search {
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\News\Domain\Model\Category> $category
      * @return void
      */
-    public function seCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
+    public function setCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
     {
         $this->category = $category;
     }

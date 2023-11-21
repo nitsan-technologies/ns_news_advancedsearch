@@ -26,7 +26,7 @@ class FlexFormHook
    */
    public function parseDataStructureByIdentifierPostProcess(array $dataStructure, array $identifier): array
    {
-     if ($identifier['type'] === 'tca' && $identifier['tableName'] === 'tt_content' && $identifier['dataStructureKey'] === 'news_pi1,list') {
+     if ($identifier['type'] === 'tca' && $identifier['tableName'] === 'tt_content' && ($identifier['dataStructureKey'] === 'news_pi1,list' || $identifier['dataStructureKey'] === '*,news_newssearchform')) {
         $getVars = GeneralUtility::_GET('edit');
         if (is_array($getVars['tt_content'])) {
             $item = array_keys($getVars['tt_content']);
