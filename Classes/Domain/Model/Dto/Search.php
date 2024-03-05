@@ -1,7 +1,7 @@
 <?php
 
 namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
-
+use GeorgRinger\News\Domain\Model\Dto;
 /***
  *
  * This file is part of the "Advance News Search" Extension for TYPO3 CMS.
@@ -17,7 +17,7 @@ namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
  * Class ExtendSearch
  *
  */
-class Search extends \GeorgRinger\News\Domain\Model\Dto\Search
+class Search extends Search
 {
     /**
      * Search teaser
@@ -63,7 +63,7 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\News\Domain\Model\Category> $category
      */
-    public function geCategory()
+    public function getCategory()
     {
         return $this->category;
     }
@@ -74,7 +74,7 @@ class Search extends \GeorgRinger\News\Domain\Model\Dto\Search
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\GeorgRinger\News\Domain\Model\Category> $category
      * @return void
      */
-    public function seCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
+    public function setCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
     {
         $this->category = $category;
     }
