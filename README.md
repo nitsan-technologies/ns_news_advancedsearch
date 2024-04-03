@@ -1,5 +1,7 @@
-# ns_news_advancedsearch
+# News Advanced Search
 
-- LIVE demo: https://demo.t3planet.com//t3t-extensions/news-advancedsearch
-- FREE version: You can download FREE version with basic-features at https://extensions.typo3.org/extension/ns_news_advancedsearch/
-- PRO version: You can download PRO version with more-features & free-support at https://t3planet.com/advanced-search-typo3-news-extension
+- Live Frontend Demo: https://demo.t3planet.com/t3-extensions/news-advancedsearch
+- Live Backend Demo: https://demo.t3planet.com/live-typo3/t3t-extensions/typo3/?TYPO3_AUTOLOGIN_USER=editor-news-advancedsearch
+- Free version: https://extensions.typo3.org/extension/ns_news_advancedsearch/
+- Documentation: http://docs.t3planet.com/en/latest/ExtNsNewsAdvancedSearch/Index.html
+- Changelog: https://t3planet.com/typo3-news-search-extension
