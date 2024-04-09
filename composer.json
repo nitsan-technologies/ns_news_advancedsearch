@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-news-advancedsearch",
   "type": "typo3-cms-extension",
-  "description": "Enhance your TYPO3 News Extension with the Advanced TYPO3 News Extension. Expand your news search capabilities with detailed, precise results and the ability to filter content by specific fields using the Advanced Extension. This extension incorporates specially crafted search algorithms to ensure both speed and relevance in your searches. *** Live Demo: https://demo.t3planet.com/t3-extensions/news-advancedsearch *** Documentation & Free Support: https://t3planet.com/typo3-news-search-extension",
+  "description": "Enhance your TYPO3 News Extension with the Advanced TYPO3 News Extension. Expand your news search capabilities with detailed, precise results and the ability to filter content by specific fields using the Advanced Extension. This extension incorporates specially crafted search algorithms to ensure both speed and relevance in your searches.",
   "keywords": [
     "News",
     "Search",
