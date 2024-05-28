@@ -23,7 +23,7 @@ class NewsControllerSettings
             $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
             ->getQueryBuilderForTable('sys_category');
 
-            if($settings['searchCategory']=='selected' && !empty($categoryStorage)) {
+            if($settings['searchCategory'] == 'selected' && !empty($categoryStorage)) {
                 $searchCategories = $queryBuilder
                 ->select('*')
                 ->from('sys_category')

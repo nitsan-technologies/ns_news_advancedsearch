@@ -7,7 +7,7 @@
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace NITSAN\NsNewsAdvancedsearch\Utility; 
+namespace NITSAN\NsNewsAdvancedsearch\Utility;
 
 use GeorgRinger\News\Utility\ClassParser;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -102,14 +102,14 @@ class ClassCacheManager
             if (!defined('LF')) {
                 define('LF', "\n");
             }
-            
+
             if (isset($this->constructorLines['code']) && count($this->constructorLines['code'])) {
-                if ($this->constructorLines['doc']) {
+                if (isset($this->constructorLines['doc'])) {
                     $code .= LF . implode("\n", $this->constructorLines['doc']);
                     $code .= LF . '    public function __construct(' . implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF . implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
                 }
             }
-            
+
             $code = $this->closeClassDefinition($code);
 
             // If an extending class is found, the file is written and
@@ -151,7 +151,7 @@ class ClassCacheManager
         $code = str_replace('<?php', '', $code);
         if (!defined('LF')) {
             define('LF', "\n");
-        } 
+        }
         if (!defined('CR')) {
             define('CR', "\n");
         }
@@ -193,7 +193,7 @@ class ClassCacheManager
                 $this->constructorLines['doc'] = explode("\n", $constructorInfo['doc'] ?? '');
 
             } else {
-                if ($this->constructorLines['doc']){
+                if (isset($this->constructorLines['doc'])) {
                     array_splice(
                         $this->constructorLines['doc'],
                         -1,
@@ -229,13 +229,13 @@ class ClassCacheManager
     /**
      * @param string $filePath
      * @return string
-     */ 
+     */
 
     protected function getPartialInfo($filePath): string
-    { 
+    {
         if (!defined('LF')) {
             define('LF', "\n");
-        } 
+        }
         return LF . '/*' . str_repeat('*', 70) . LF . "\t" .
         'this is partial from: ' . LF . "\t" . str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
             '*',
@@ -248,7 +248,7 @@ class ClassCacheManager
      * @return string
      */
     protected function closeClassDefinition($code): string
-    { 
+    {
         if (!defined('LF')) {
             define('LF', "\n");
         }

@@ -1,9 +1,15 @@
 plugin.tx_news {
-	view {
-		templateRootPaths {
-			20 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
-		}
-	}
+    view {
+        templateRootPaths {
+            20 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
+        }
+    }
 }
-page.includeCSS.advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
-page.includeJSFooter.advancesearchJs = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
+page {
+    includeCSS {
+        advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
+    }
+    includeJSFooter {
+        advancesearchJs = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
+    }
+}

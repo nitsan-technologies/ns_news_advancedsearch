@@ -10,9 +10,8 @@
                         <type>check</type>
                     </config>
             </settings.advancedSearch>
-
             <settings.searchCategory>
-                    <label>search_category</label>
+                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:searchCategory</label>
                     <onChange>reload</onChange>
                     <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
                     <config>
@@ -32,7 +31,7 @@
             </settings.searchCategory>
 
             <settings.advancedSearchCategoryPage>
-                    <label>select_category_page</label>
+                    <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectCategoryPage</label>
                     <onChange>reload</onChange>
                     <displayCond>FIELD:settings.searchCategory:=:selected</displayCond>
                     <config>

@@ -21,6 +21,12 @@
 			<trans-unit id="search_category.2">
 				<source>Show all items from selected sys_categories folder</source>
 			</trans-unit>
+			<trans-unit id="searchCategory">
+				<source>Search Category</source>
+			</trans-unit>
+			<trans-unit id="selectCategoryPage">
+				<source>Select Category Page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
