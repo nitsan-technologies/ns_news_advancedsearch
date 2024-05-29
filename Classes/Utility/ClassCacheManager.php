@@ -100,7 +100,7 @@ class ClassCacheManager
                 }
             }
             if (isset($this->constructorLines['code']) && count($this->constructorLines['code'])) {
-                if($this->constructorLines['doc']){
+                if($this->constructorLines['doc']) {
                     $code .= LF . implode("\n", $this->constructorLines['doc']);
                     $code .= LF . '    public function __construct(' . implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF . implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
                 }
@@ -184,7 +184,7 @@ class ClassCacheManager
                 $this->constructorLines['doc'] = explode("\n", $constructorInfo['doc'] ?? '');
 
             } else {
-                if ($this->constructorLines['doc']){
+                if ($this->constructorLines['doc']) {
                     array_splice(
                         $this->constructorLines['doc'],
                         -1,
