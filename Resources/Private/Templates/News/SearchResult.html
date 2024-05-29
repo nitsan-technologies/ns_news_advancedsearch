@@ -11,7 +11,7 @@
 				<f:if condition="{news}">
 					<f:then>
 						<div class="count-msg">
-							<f:translate key="search_text" extensionName='ns_news_advancedsearch' arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
+							<f:translate key="search_text" arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
 						</div>
 						<f:if condition="{settings.search.paginate.insertAbove}">
 							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />

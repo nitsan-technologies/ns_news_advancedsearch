@@ -4,22 +4,19 @@ namespace NITSAN\NsNewsAdvancedsearch\Hooks;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use GeorgRinger\News\Domain\Model\Dto\NewsDemand;
 
 class Repository
 {
-    public function modify(array $params, $newsRepository)
+    public function modify(array $params)
     {
-        $this->updateConstraints($params['demand'], $params['respectEnableFields'], $params['query'], $params['constraints']);
+        $this->updateConstraints($params['query'], $params['constraints']);
     }
 
     /**
-     * @param NewsDemand $demand
-     * @param bool $respectEnableFields
      * @param QueryInterface $query
      * @param array $constraints
      */
-    protected function updateConstraints($demand, $respectEnableFields, QueryInterface $query, array &$constraints)
+    protected function updateConstraints(QueryInterface $query, array &$constraints)
     {
         $actionRequest = GeneralUtility::_GET('tx_news_pi1')['search'] ?? null;
         if(isset($actionRequest)) {

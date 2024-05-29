@@ -17,7 +17,7 @@ namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
  * Class ExtendSearch
  *
  */
-class Search extends Search
+class Search
 {
     /**
      * Search teaser
