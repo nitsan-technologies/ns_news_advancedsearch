@@ -7,10 +7,10 @@
 			Templates/News/SearchForm.html
 	-->
 	<f:section name="content">
-		<div class="news-search-form">
+		<div class="news-search-form" id="advanced-search">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearch">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">

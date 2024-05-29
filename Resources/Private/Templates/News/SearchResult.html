@@ -13,9 +13,6 @@
 						<div class="count-msg">
 							<f:translate key="search_text" extensionName='ns_news_advancedsearch' arguments="{0:'{f:count(subject:news)}',1:search.subject}" />
 						</div>
-						<f:if condition="{settings.search.paginate.insertAbove}">
-							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
-						</f:if>
 						<f:if condition="{pagination.paginator.paginatedItems}">
 							<f:then>
 								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
@@ -28,9 +25,7 @@
 								</f:for>
 							</f:else>
 						</f:if>
-						<f:if condition="{settings.search.paginate.insertBelow}">
-							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
-						</f:if>
+                        <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
 					</f:then>
 					<f:else>
 						<div class="no-news-found">

@@ -16,7 +16,8 @@ class FlexFormHook
     public function getFlexFormDS_postProcessDS(&$dataStructArray, $conf, $row, $table)
     {
         if ($table === 'tt_content' && $row['CType'] === 'list' && $row['list_type'] === 'news_pi1') {
-            $dataStructArray['sheets']['extraEntry'] = 'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
+            $dataStructArray['sheets']['extraEntry'] =
+                'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
         }
     }
     // For 8x & 9x
@@ -26,18 +27,17 @@ class FlexFormHook
     * @return array
     */
     public function parseDataStructureByIdentifierPostProcess(array $dataStructure, array $identifier): array
-    { 
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($dataStructure, __FILE__.' Line '.__LINE__);
-        if ($identifier['type'] === 'tca' && $identifier['tableName'] === 'tt_content' && ($identifier['dataStructureKey'] === 'news_pi1,list' || $identifier['dataStructureKey'] === '*,news_newssearchform')) {
+    {
+        if ($identifier['type'] === 'tca' &&
+            $identifier['tableName'] === 'tt_content' &&
+            ($identifier['dataStructureKey'] === 'news_pi1,list' ||
+                $identifier['dataStructureKey'] === '*,news_newssearchform')
+        ) {
             $getVars = GeneralUtility::_GET('edit');
             if (is_array($getVars['tt_content'])) {
-                $item = array_keys($getVars['tt_content']);
-               
-                $row = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tt_content', (int)$item[0]);
-                $ffXml = GeneralUtility::xml2array($row['pi_flexform']);
-                // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($ffXml, __FILE__.' Line '.__LINE__);
                 if (version_compare(TYPO3_branch, '9.0', '>')) {
-                    $file = \TYPO3\CMS\Core\Core\Environment::getPublicPath() . '/typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
+                    $file = \TYPO3\CMS\Core\Core\Environment::getPublicPath() .
+                        '/typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
                 } else {
                     $file = PATH_site . 'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
                 }

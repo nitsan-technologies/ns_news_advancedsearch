@@ -1,15 +1,18 @@
 plugin.tx_news {
-	view {
-		templateRootPaths {
-			20 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
-		}
-	}
+    view {
+        templateRootPaths {
+            20 = {$plugin.ns_news_advancedsearch.view.templateRootPath}
+        }
+        partialRootPaths {
+            20 = {$plugin.ns_news_advancedsearch.view.partialRootPath}
+        }
+    }
 }
 page {
     includeCSS {
-        advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
+        advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.cs
     }
     includeJSFooter {
-        advancesearchJs = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
+        advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Js/advancedsearch.js
     }
 }
