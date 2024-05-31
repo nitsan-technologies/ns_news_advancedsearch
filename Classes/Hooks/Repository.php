@@ -18,6 +18,7 @@ class Repository
      */
     protected function updateConstraints(QueryInterface $query, array &$constraints)
     {
+        //@extensionScannerIgnoreLine
         $actionRequest = GeneralUtility::_GET('tx_news_pi1')['search'] ?? null;
         if(isset($actionRequest)) {
             $actionRequest['category'] = $actionRequest['category'] ?? '0';

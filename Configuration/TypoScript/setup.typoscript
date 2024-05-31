@@ -7,9 +7,10 @@ plugin.tx_news {
 }
 page {
     includeCSS {
-        advancedsearch = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
+        4545 = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
     }
-    includeJSFooter {
-        advancesearchJs = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
+    includeJS {
+        678 = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
     }
+
 }
