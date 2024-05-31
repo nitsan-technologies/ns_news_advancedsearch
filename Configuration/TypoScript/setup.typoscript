@@ -9,4 +9,7 @@ page {
     includeCSS {
         45 = EXT:ns_news_advancedsearch/Resources/Public/Css/advancedsearch.css
     }
+    includeJS {
+        56757 = EXT:ns_news_advancedsearch/Resources/Public/Js/advancesearch.js
+    }
 }
