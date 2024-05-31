@@ -3,8 +3,10 @@
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
+//@extensionScannerIgnoreLine
 if (version_compare(TYPO3_branch, '8.0', '<')) {
     // For 7x Flexform Hook
+    //@extensionScannerIgnoreLine
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_befunc.php']['getFlexFormDSClass'][] =
         \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
 } else {
@@ -27,8 +29,3 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Controller/NewsController.php']['ove
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']
 ['ns_news_advancedsearch']
         = 'NITSAN\\NsNewsAdvancedsearch\\Hooks\\Repository->modify';
-
-//Extending News Controller
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\GeorgRinger\News\Controller\NewsController::class] = [
-    'className' => \NITSAN\NsNewsAdvancedsearch\Controller\NewsController::class
-];

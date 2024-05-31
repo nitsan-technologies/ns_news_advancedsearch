@@ -10,7 +10,7 @@
 		<div class="news-search-form" id="advanced-search">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearch">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearchns">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
@@ -55,9 +55,7 @@
 								<label for="news-maximumDate"><f:translate key="search-maximumDate" /></label>
 								<f:form.textfield id="news-maximumDate" property="maximumDate" type="date" class="form-control"/>
 							</div>
-
 							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary"/>
-
 						</fieldset>
 					</f:form>
 				</f:else>

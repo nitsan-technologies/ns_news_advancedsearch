@@ -35,10 +35,12 @@ class FlexFormHook
         ) {
             $getVars = GeneralUtility::_GET('edit');
             if (is_array($getVars['tt_content'])) {
+                //@extensionScannerIgnoreLine
                 if (version_compare(TYPO3_branch, '9.0', '>')) {
                     $file = \TYPO3\CMS\Core\Core\Environment::getPublicPath() .
                         '/typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
                 } else {
+                    //@extensionScannerIgnoreLine
                     $file = PATH_site . 'typo3conf/ext/ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml';
                 }
                 $content = file_get_contents($file);

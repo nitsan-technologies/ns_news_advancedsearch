@@ -10,6 +10,7 @@ class NewsControllerSettings
     {
         $settings = $params['originalSettings'];
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
+            //@extensionScannerIgnoreLine
             if (version_compare(TYPO3_branch, '9.0', '<')) {
                 $languageid = $GLOBALS['TSFE']->sys_language_uid;
                 if (empty($languageid)) {
@@ -26,6 +27,7 @@ class NewsControllerSettings
             // Get Categories for TYPO3 7&8
             if (version_compare(TYPO3_branch, '9.0', '<')) {
                 if($settings['searchCategory'] == 'selected' && !empty($categoryStorage)) {
+                    //@extensionScannerIgnoreLine
                     $searchCategories = $GLOBALS['TYPO3_DB']
                         ->exec_SELECTgetRows(
                             '*',
@@ -34,6 +36,7 @@ class NewsControllerSettings
                             ' AND pid='.$categoryStorage.' ORDER BY sorting ASC'
                         );
                 } else {
+                    //@extensionScannerIgnoreLine
                     $searchCategories = $GLOBALS['TYPO3_DB']
                         ->exec_SELECTgetRows(
                             '*',
