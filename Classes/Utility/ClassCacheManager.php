@@ -107,7 +107,7 @@ class ClassCacheManager
             }
             if (isset($this->constructorLines['code']) &&
                 count($this->constructorLines['code']) &&
-                $this->constructorLines['doc']
+                isset($this->constructorLines['doc'])
             ) {
                 $code .= LF . implode("\n", $this->constructorLines['doc']);
                 $code .= LF . '    public function __construct(' .
@@ -192,7 +192,7 @@ class ClassCacheManager
                 $this->constructorLines['doc'] = explode("\n", $constructorInfo['doc'] ?? '');
 
             } else {
-                if ($this->constructorLines['doc']) {
+                if (isset($this->constructorLines['doc'])) {
                     array_splice(
                         $this->constructorLines['doc'],
                         -1,

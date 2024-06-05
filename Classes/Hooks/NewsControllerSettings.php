@@ -9,6 +9,8 @@ class NewsControllerSettings
     public function modify(array $params)
     {
         $settings = $params['originalSettings'];
+        $settings['advancedSearch'] = $settings['advancedSearch'] ?? 0;
+        $settings['searchCategory'] = $settings['searchCategory'] ?? '';
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             //@extensionScannerIgnoreLine
             if (version_compare(TYPO3_branch, '9.0', '<')) {
@@ -22,7 +24,7 @@ class NewsControllerSettings
                 )->getAspect('language');
                 $languageid = $languageAspect->getId();
             }
-            $categoryStorage = $settings['advancedSearchCategoryPage'];
+            $categoryStorage = $settings['advancedSearchCategoryPage'] ?? null;
 
             // Get Categories for TYPO3 7&8
             if (version_compare(TYPO3_branch, '9.0', '<')) {
