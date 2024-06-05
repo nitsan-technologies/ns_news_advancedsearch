@@ -2,6 +2,8 @@
 
 namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
 
+use GeorgRinger\News\Domain\Model\Dto\Search as NewsSearch;
+
 /***
  *
  * This file is part of the "Advance News Search" Extension for TYPO3 CMS.
@@ -17,7 +19,7 @@ namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
  * Class ExtendSearch
  *
  */
-class Search
+class Search extends NewsSearch
 {
     /**
      * Search teaser

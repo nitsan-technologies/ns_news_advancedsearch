@@ -94,20 +94,15 @@ class ClassCacheManager
                 define('LF', "\n");
             }
 
-            if (isset($this->constructorLines['code']) &&
+            if (
+                isset($this->constructorLines['code']) &&
                 count($this->constructorLines['code']) &&
                 isset($this->constructorLines['doc'])
             ) {
                 $code .= LF . implode("\n", $this->constructorLines['doc']);
-                $code .= LF . ' public function __construct('.
-                    implode(
-                        ',',
-                        $this->constructorLines['parameters'] ?? []
-                    ) . ')' . LF . '    {' . LF .
-                    implode(
-                        LF,
-                        $this->constructorLines['code'] ?? []
-                    ) . LF . '    }' . LF;
+                $code .= LF . '    public function __construct(' .
+                    implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF .
+                    implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
             }
 
             $code = $this->closeClassDefinition($code);
@@ -216,7 +211,8 @@ class ClassCacheManager
         }
 
         $codePart = implode(LF, $innerPart);
-        $codePart = substr($codePart, 0, strrpos($codePart, '}'));
+        $closingBracket = strrpos($codePart, '}');
+        $codePart = substr($codePart, 0, $closingBracket);
 
         return $this->getPartialInfo($filePath) . $codePart;
     }

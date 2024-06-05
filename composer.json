@@ -7,17 +7,17 @@
     "Search",
     "TYPO3"
   ],
-  "homepage": "https://www.nitsan.in/",
+  "homepage": "https://t3planet.com/typo3-news-search-extension",
   "authors": [
     {
-        "name": "NITSAN Technologies Pvt Ltd",
+        "name": "T3: Nilesh Malankiya, T3: Maulik Lakhnotra, QA: Krishna Dhapa",
         "email": "info@nitsan.in",
         "role": "Developer",
-        "homepage": "http://www.nitsan.in/"
+        "homepage": "https://t3planet.com/"
     }
   ],
   "support": {
-    "issues": "https://www.nitsan.in/"
+    "issues": "https://github.com/nitsan-technologies/ns_news_advancedsearch/issues"
   },
   "license": "MIT",
   "require": {

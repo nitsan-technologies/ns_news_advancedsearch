@@ -15,8 +15,7 @@ class NewsControllerSettings
         $settings['advancedSearch'] = $settings['advancedSearch'] ?? 0;
         $settings['searchCategory'] = $settings['searchCategory'] ?? '';
         $settings['disableOverrideDemand'] = $settings['disableOverrideDemand'] ?? 0;
-        if (!is_null($settings['advancedSearch'])) {
-
+        if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             $context = GeneralUtility::makeInstance(Context::class);
             $languageid = $context->getPropertyFromAspect('language', 'id');
 
