@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager:
+    arguments: ["@news.cache"]
+    public: true
+
+  NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader:
+    arguments:
+      ["@news.cache", '@NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager']
+    public: true

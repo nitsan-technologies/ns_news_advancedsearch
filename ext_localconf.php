@@ -15,6 +15,8 @@ if (version_compare(TYPO3_branch, '8.0', '<')) {
         = \NITSAN\NsNewsAdvancedsearch\Hooks\FlexFormHook::class;
 }
 
+$GLOBALS['TYPO3_CONF_VARS']['FE']['pageNotFoundOnCHashError'] = 0;
+
 // Add Custom fields to search Model
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['ext:news'] =
     \NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager::class . '->reBuild';
@@ -29,3 +31,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Controller/NewsController.php']['ove
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']
 ['ns_news_advancedsearch']
         = 'NITSAN\\NsNewsAdvancedsearch\\Hooks\\Repository->modify';
+
+if (class_exists(\NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader::class)) {
+    \NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader::registerAutoloader();
+}
