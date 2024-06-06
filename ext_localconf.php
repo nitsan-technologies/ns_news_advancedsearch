@@ -19,3 +19,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Controller/NewsController.php']['ove
 // Modify Repository query for advanced filter
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']
 ['ns_news_advancedsearch'] = 'NITSAN\\NsNewsAdvancedsearch\\Hooks\\Repository->modify';
+
+if (class_exists(\NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader::class)) {
+    \NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader::registerAutoloader();
+}
