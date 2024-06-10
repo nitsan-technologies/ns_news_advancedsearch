@@ -15,7 +15,7 @@
 										<f:for each="{settings.searchCategories}" as="category" iteration="index">
 											<div class="col-sm-4">
 												<label for="check{category.uid}">
-													<f:form.checkbox property="category" multiple="1" id="check{category.uid}" value="{category.uid}"/><span>{category.title}</span>
+													<f:form.checkbox property="category" multiple="1" id="check{category.uid}" value="{category.uid}"/> <span>{category.title}</span>
 												</label>
 											</div>
 										</f:for>
