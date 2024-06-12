@@ -3,23 +3,22 @@
 namespace NITSAN\NsNewsAdvancedsearch\Hooks;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use GeorgRinger\News\Domain\Repository\NewsRepository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 class Repository
 {
-    public function modify(array $params, $newsRepository)
+    public function modify(array $params)
     {
-        $this->updateConstraints($params['demand'], $params['respectEnableFields'], $params['query'], $params['constraints']);
+        $this->updateConstraints($params['query'], $params['constraints']);
     }
 
     /**
-     * @param \GeorgRinger\News\Domain\Model\Dto\NewsDemand $demand
-     * @param bool $respectEnableFields
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
+     * @param QueryInterface $query
      * @param array $constraints
      */
-    protected function updateConstraints($demand, $respectEnableFields, \TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints)
+    protected function updateConstraints(QueryInterface $query, array &$constraints)
     {
+        //@extensionScannerIgnoreLine
         $actionRequest = GeneralUtility::_GET('tx_news_pi1')['search'] ?? null;
         if(isset($actionRequest)) {
             $actionRequest['category'] = $actionRequest['category'] ?? '0';
@@ -32,10 +31,10 @@ class Repository
                     $constCategory = [];
                     $searchCategories = $actionRequest['category'];
                     foreach ($searchCategories as $categories) {
-                        if($categories=='0') {
-                            $constCategory[]=$query->greaterThan('categories', 0);
+                        if($categories == '0') {
+                            $constCategory[] = $query->greaterThan('categories', 0);
                         } else {
-                            $constCategory[]=$query->contains('categories', $categories);
+                            $constCategory[] = $query->contains('categories', $categories);
                         }
                     }
                     $constraints[] = $query->logicalOr(...array_values($constCategory));

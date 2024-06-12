@@ -7,7 +7,7 @@
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace NITSAN\NsNewsAdvancedsearch\Utility; 
+namespace NITSAN\NsNewsAdvancedsearch\Utility;
 
 use GeorgRinger\News\Utility\ClassParser;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -15,6 +15,7 @@ use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class ClassCacheManager
@@ -41,27 +42,13 @@ class ClassCacheManager
         if ($classCache === null) {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
             if (!$cacheManager->hasCache('news')) {
-                $cacheManager->setCacheConfigurations($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']);
+                $cacheManager->setCacheConfigurations(
+                    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
+                );
             }
             $this->classCache = $cacheManager->getCache('news');
         } else {
             $this->classCache = $classCache;
-        }
-    }
-
-    public function reBuildSimple(bool $forceRebuild = false)
-    {
-        if (!function_exists('token_get_all')) {
-            throw new \Exception('The function token_get_all must exist. Please install the module PHP Module Tokenizer');
-        }
-
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes'])) {
-            return;
-        }
-
-        $files = GeneralUtility::getFilesInDir(Environment::getVarPath() . '/cache/code/news/', 'php');
-        if (empty($files) && $forceRebuild) {
-            $this->reBuild();
         }
     }
 
@@ -70,7 +57,11 @@ class ClassCacheManager
         $classPath = 'Classes/';
 
         if (!function_exists('token_get_all')) {
-            throw new \Exception('The function token_get_all must exist. Please install the module PHP Module Tokenizer');
+            throw new \Exception(
+                LocalizationUtility::translate(
+                    'error.token.get.all'
+                )
+            );
         }
 
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes'])) {
@@ -96,20 +87,24 @@ class ClassCacheManager
 
                 if (is_file($path)) {
                     $extendingClassFound = true;
-                    $code .= $this->parseSingleFile($path, false);
+                    $code .= $this->parseSingleFile($path);
                 }
             }
             if (!defined('LF')) {
                 define('LF', "\n");
             }
-            
-            if (isset($this->constructorLines['code']) && count($this->constructorLines['code'])) {
-                if ($this->constructorLines['doc']) {
-                    $code .= LF . implode("\n", $this->constructorLines['doc']);
-                    $code .= LF . '    public function __construct(' . implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF . implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
-                }
+
+            if (
+                isset($this->constructorLines['code']) &&
+                count($this->constructorLines['code']) &&
+                isset($this->constructorLines['doc'])
+            ) {
+                $code .= LF . implode("\n", $this->constructorLines['doc']);
+                $code .= LF . '    public function __construct(' .
+                    implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF .
+                    implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
             }
-            
+
             $code = $this->closeClassDefinition($code);
 
             // If an extending class is found, the file is written and
@@ -151,7 +146,7 @@ class ClassCacheManager
         $code = str_replace('<?php', '', $code);
         if (!defined('LF')) {
             define('LF', "\n");
-        } 
+        }
         if (!defined('CR')) {
             define('CR', "\n");
         }
@@ -177,10 +172,6 @@ class ClassCacheManager
             unset($innerPart[0]);
         }
 
-        $innerPartLine = function ($line) use ($offsetForInnerPart) {
-            return $line - $offsetForInnerPart;
-        };
-
         // unset the constructor and save it's lines
 
         if (isset($classParserInformation['functions']['__construct'])) {
@@ -193,7 +184,7 @@ class ClassCacheManager
                 $this->constructorLines['doc'] = explode("\n", $constructorInfo['doc'] ?? '');
 
             } else {
-                if ($this->constructorLines['doc']){
+                if (isset($this->constructorLines['doc'])) {
                     array_splice(
                         $this->constructorLines['doc'],
                         -1,
@@ -229,18 +220,19 @@ class ClassCacheManager
     /**
      * @param string $filePath
      * @return string
-     */ 
+     */
 
     protected function getPartialInfo($filePath): string
-    { 
+    {
         if (!defined('LF')) {
             define('LF', "\n");
-        } 
+        }
         return LF . '/*' . str_repeat('*', 70) . LF . "\t" .
-        'this is partial from: ' . LF . "\t" . str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
-            '*',
-            70
-        ) . '*/' . LF;
+        'this is partial from: ' . LF . "\t" .
+            str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
+                '*',
+                70
+            ) . '*/' . LF;
     }
 
     /**
@@ -248,7 +240,7 @@ class ClassCacheManager
      * @return string
      */
     protected function closeClassDefinition($code): string
-    { 
+    {
         if (!defined('LF')) {
             define('LF', "\n");
         }

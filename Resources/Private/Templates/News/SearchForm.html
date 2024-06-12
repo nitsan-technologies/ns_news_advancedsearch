@@ -2,24 +2,20 @@
 	xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
 	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 	<f:layout name="General" />
-	<!--
-		=====================
-			Templates/News/SearchForm.html
-	-->
 	<f:section name="content">
-		<div class="news-search-form">
+		<div class="news-search-form" id="advanced-search">
 			<f:if condition="{settings.advancedSearch}==1">
 				<f:then>
-					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" >
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearchns">
 						<fieldset>
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
-									<label for="news-category"><f:translate id='search_sys_category' extensionName='ns_news_advancedsearch' />:</label>
+									<label for="news-category"><f:translate key='search_sys_category' extensionName='ns_news_advancedsearch' />:</label>
 									<div class="row">
 										<f:for each="{settings.searchCategories}" as="category" iteration="index">
 											<div class="col-sm-4">
 												<label for="check{category.uid}">
-													<f:form.checkbox property="category" multiple="1" id="check{category.uid}" value="{category.uid}"/><span>{category.title}</span>
+													<f:form.checkbox property="category" multiple="1" id="check{category.uid}" value="{category.uid}"/> <span>{category.title}</span>
 												</label>
 											</div>
 										</f:for>

@@ -24,6 +24,10 @@
 			<trans-unit id="search_all_categories"  xml:space="preserve">
 				<source>Show all items from all categories</source>
 			</trans-unit>
+            <trans-unit id="error.token.get.all">
+                <source>The function token_get_all must exist. Please install the module PHP Module Tokenizer</source>
+            </trans-unit>
+
 		</body>
 	</file>
 </xliff>

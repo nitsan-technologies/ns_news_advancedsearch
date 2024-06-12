@@ -4,45 +4,43 @@
         <type>array</type>
         <el>
             <settings.advancedSearch>
-                    <label>Enable Advanced Search (For Search Form Only)</label>
-                    <onChange>reload</onChange>
-                    <config>
-                        <type>check</type>
-                    </config>
+                <label>Enable Advanced Search (For Search Form Only)</label>
+                <onChange>reload</onChange>
+                <config>
+                    <type>check</type>
+                </config>
             </settings.advancedSearch>
-
             <settings.searchCategory>
-                    <label>search_category</label>
-                    <onChange>reload</onChange>
-                    <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
-                    <config>
-                        <type>radio</type>
-                        <items type="array">
-                            <numIndex index="0" type="array">
-                                <label>Show all items from all sys_categories</label>
-                                <value>all</value>
-                            </numIndex>
-                            <numIndex index="1" type="array">
-                                <label>Show all items from selected sys_categories folder</label>
-                                <value>selected</value>
-                            </numIndex>
-                        </items>
-                        <default>all</default>
-                    </config>
+                <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:searchCategory</label>
+                <onChange>reload</onChange>
+                <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
+                <config>
+                    <type>radio</type>
+                    <items type="array">
+                        <numIndex index="0" type="array">
+                            <label>Show all items from all sys_categories</label>
+                            <value>all</value>
+                        </numIndex>
+                        <numIndex index="1" type="array">
+                            <label>Show all items from selected sys_categories folder</label>
+                            <value>selected</value>
+                        </numIndex>
+                    </items>
+                    <default>all</default>
+                </config>
             </settings.searchCategory>
-
             <settings.advancedSearchCategoryPage>
-                    <label>select_category_page</label>
-                    <onChange>reload</onChange>
-                    <displayCond>FIELD:settings.searchCategory:=:selected</displayCond>
-                    <config>
-                        <type>group</type>
-                        <internal_type>db</internal_type>
-                        <allowed>pages</allowed>
-                        <size>1</size>
-                        <maxitems>1</maxitems>
-                        <minitems>1</minitems>
-                    </config>
+                <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectCategoryPage</label>
+                <onChange>reload</onChange>
+                <displayCond>FIELD:settings.searchCategory:=:selected</displayCond>
+                <config>
+                    <type>group</type>
+                    <internal_type>db</internal_type>
+                    <allowed>pages</allowed>
+                    <size>1</size>
+                    <maxitems>1</maxitems>
+                    <minitems>1</minitems>
+                </config>
             </settings.advancedSearchCategoryPage>
         </el>
     </ROOT>

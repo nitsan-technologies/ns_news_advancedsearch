@@ -1,7 +1,9 @@
 <?php
 
 namespace NITSAN\NsNewsAdvancedsearch\Domain\Model\Dto;
-use GeorgRinger\News\Domain\Model\Dto;
+
+use GeorgRinger\News\Domain\Model\Dto\Search as NewsSearch;
+
 /***
  *
  * This file is part of the "Advance News Search" Extension for TYPO3 CMS.
@@ -17,7 +19,7 @@ use GeorgRinger\News\Domain\Model\Dto;
  * Class ExtendSearch
  *
  */
-class Search extends Search
+class Search extends NewsSearch
 {
     /**
      * Search teaser
@@ -82,7 +84,7 @@ class Search extends Search
     /**
      * @param string $teaser
      */
-    public function setTeaser($teaser)
+    public function setTeaser($teaser): void
     {
         $this->teaser = $teaser;
     }
@@ -90,7 +92,7 @@ class Search extends Search
     /**
      * @return string
      */
-    public function getTeaser()
+    public function getTeaser(): string
     {
         return $this->teaser;
     }
@@ -98,7 +100,7 @@ class Search extends Search
     /**
      * @param string $title
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -106,7 +108,7 @@ class Search extends Search
     /**
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
