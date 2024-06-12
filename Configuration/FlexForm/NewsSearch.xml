@@ -14,7 +14,6 @@
                     </config>
                 </TCEforms>
             </settings.advancedSearch>
-
             <settings.searchCategory>
                 <TCEforms>
                     <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:search_category</label>
@@ -36,7 +35,6 @@
                     </config>
                 </TCEforms>
             </settings.searchCategory>
-
             <settings.advancedSearchCategoryPage>
                 <TCEforms>
                     <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:select_category_page</label>

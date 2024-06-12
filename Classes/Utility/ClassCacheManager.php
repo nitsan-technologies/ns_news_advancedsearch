@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of the "news" Extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- */
-
 namespace NITSAN\NsNewsAdvancedsearch\Utility;
 
 use GeorgRinger\News\Utility\ClassParser;
@@ -41,7 +34,9 @@ class ClassCacheManager
         if ($classCache === null) {
             $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
             if (!$cacheManager->hasCache('news')) {
-                $cacheManager->setCacheConfigurations($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']);
+                $cacheManager->setCacheConfigurations(
+                    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']
+                );
             }
             $this->classCache = $cacheManager->getCache('news');
         } else {
@@ -52,7 +47,9 @@ class ClassCacheManager
     public function reBuildSimple(bool $forceRebuild = false)
     {
         if (!function_exists('token_get_all')) {
-            throw new \Exception('The function token_get_all must exist. Please install the module PHP Module Tokenizer');
+            throw new \Exception(
+                'The function token_get_all must exist. Please install the module PHP Module Tokenizer'
+            );
         }
 
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes'])) {
@@ -70,7 +67,9 @@ class ClassCacheManager
         $classPath = 'Classes/';
 
         if (!function_exists('token_get_all')) {
-            throw new \Exception('The function token_get_all must exist. Please install the module PHP Module Tokenizer');
+            throw new \Exception(
+                'The function token_get_all must exist. Please install the module PHP Module Tokenizer'
+            );
         }
 
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['classes'])) {
@@ -96,16 +95,23 @@ class ClassCacheManager
 
                 if (is_file($path)) {
                     $extendingClassFound = true;
-                    $code .= $this->parseSingleFile($path, false);
+                    $code .= $this->parseSingleFile($path);
                 }
             }
-            if (isset($this->constructorLines['code']) && count($this->constructorLines['code'])) {
-                if($this->constructorLines['doc']){
-                    $code .= LF . implode("\n", $this->constructorLines['doc']);
-                    $code .= LF . '    public function __construct(' . implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF . implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
-                }
-
-
+            if (isset($this->constructorLines['code']) &&
+                count($this->constructorLines['code']) &&
+                isset($this->constructorLines['doc'])
+            ) {
+                $code .= LF . implode("\n", $this->constructorLines['doc']);
+                $code .= LF . '    public function __construct(' .
+                    implode(
+                        ',',
+                        $this->constructorLines['parameters'] ?? []
+                    ) . ')' . LF . '    {' . LF .
+                    implode(
+                        LF,
+                        $this->constructorLines['code'] ?? []
+                    ) . LF . '    }' . LF;
             }
             $code = $this->closeClassDefinition($code);
 
@@ -135,7 +141,6 @@ class ClassCacheManager
      */
     protected function parseSingleFile($filePath, $baseClass = false): string
     {
-
         if (!is_file($filePath)) {
             throw new \InvalidArgumentException(sprintf('File "%s" could not be found', $filePath));
         }
@@ -168,10 +173,6 @@ class ClassCacheManager
             unset($innerPart[0]);
         }
 
-        $innerPartLine = function ($line) use ($offsetForInnerPart) {
-            return $line - $offsetForInnerPart;
-        };
-
         // unset the constructor and save it's lines
 
         if (isset($classParserInformation['functions']['__construct'])) {
@@ -184,7 +185,7 @@ class ClassCacheManager
                 $this->constructorLines['doc'] = explode("\n", $constructorInfo['doc'] ?? '');
 
             } else {
-                if ($this->constructorLines['doc']){
+                if (isset($this->constructorLines['doc'])) {
                     array_splice(
                         $this->constructorLines['doc'],
                         -1,
@@ -224,7 +225,8 @@ class ClassCacheManager
     protected function getPartialInfo($filePath): string
     {
         return LF . '/*' . str_repeat('*', 70) . LF . "\t" .
-        'this is partial from: ' . LF . "\t" . str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
+        'this is partial from: ' . LF . "\t" .
+            str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
             '*',
             70
         ) . '*/' . LF;

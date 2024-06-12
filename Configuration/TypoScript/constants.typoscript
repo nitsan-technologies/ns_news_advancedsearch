@@ -2,5 +2,8 @@ plugin.ns_news_advancedsearch {
 	view {
 		# cat=plugin.ns_news_advancedsearch/file; type=string; label=Path to template root (FE)
 		templateRootPath = EXT:ns_news_advancedsearch/Resources/Private/Templates/
+
+        # cat=plugin.ns_news_advancedsearch/file; type=string; label=Path to template root (FE)
+        partialRootPath = EXT:ns_news_advancedsearch/Resources/Private/Partials/
 	}
 }

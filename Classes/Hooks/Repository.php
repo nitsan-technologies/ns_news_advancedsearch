@@ -1,13 +1,18 @@
 <?php
+
 namespace NITSAN\NsNewsAdvancedsearch\Hooks;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use GeorgRinger\News\Domain\Repository\NewsRepository;
 
-class Repository {
 
-    public function modify(array $params, $newsRepository) {
-        $this->updateConstraints($params['demand'], $params['respectEnableFields'], $params['query'], $params['constraints']);
+class Repository
+{
+    public function modify(array $params)
+    {
+        $this->updateConstraints(
+            $params['query'],
+            $params['constraints']
+        );
     }
 
     /**
@@ -16,7 +21,8 @@ class Repository {
      * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
      * @param array $constraints
      */
-    protected function updateConstraints($demand, $respectEnableFields, \TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints) {
+    protected function updateConstraints(\TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints)
+    {
         $actionRequest = GeneralUtility::_GET('tx_news_pi1')['search'] ?? null;
         if(isset($actionRequest)) {
             $actionRequest['category'] = $actionRequest['category'] ?? '0';
