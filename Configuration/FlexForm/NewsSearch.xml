@@ -39,7 +39,6 @@
                     <allowed>pages</allowed>
                     <size>1</size>
                     <maxitems>1</maxitems>
-                    <minitems>1</minitems>
                 </config>
             </settings.advancedSearchCategoryPage>
         </el>
