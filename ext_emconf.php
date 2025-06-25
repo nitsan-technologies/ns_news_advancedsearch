@@ -1,14 +1,13 @@
 <?php
 
 $EM_CONF['ns_news_advancedsearch'] = [
-    'title' => 'News Advanced Search',
-    'description' => 'Enhance your TYPO3 News Extension with the Advanced TYPO3 News Extension. Expand your news search capabilities with detailed, precise results and the ability to filter content by specific fields using the Advanced Extension. This extension incorporates specially crafted search algorithms to ensure both speed and relevance in your searches. 
+    'title' => 'Advanced News Search for TYPO3',
+    'description' => 'Extend the TYPO3 News extension with powerful advanced search functionality. Easily filter news by categories, authors, tags, and custom fields with precision and speed—thanks to optimized search algorithms designed for relevance.',
     
-    *** Live Demo: https://demo.t3planet.com/t3-extensions/news-advancedsearch *** Documentation & Free Support: https://t3planet.com/typo3-news-search-extension',
     'category' => 'plugin',
-    'author' => 'T3: Nilesh Malankiya, QA: Krishna Dhapa',
-    'author_email' => 'sanjay@nitsan.in',
-    'author_company' => 'T3Planet // NITSAN',
+    'author' => 'Team T3Planet',
+    'author_email' => 'info@t3planet.de',
+    'author_company' => 'T3Planet',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
