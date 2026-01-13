@@ -10,6 +10,7 @@ services:
             identifier: 'flexParsing'
             event: TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureParsedEvent
 
+
   NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager:
     arguments: ['@news.cache']
     public: true

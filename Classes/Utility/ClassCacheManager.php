@@ -95,14 +95,14 @@ class ClassCacheManager
             }
 
             if (
-                isset($this->constructorLines['code']) &&
-                count($this->constructorLines['code']) &&
-                isset($this->constructorLines['doc'])
+                isset($this->constructorLines['code'])
+                && count($this->constructorLines['code'])
+                && isset($this->constructorLines['doc'])
             ) {
                 $code .= LF . implode("\n", $this->constructorLines['doc']);
-                $code .= LF . '    public function __construct(' .
-                    implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF .
-                    implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
+                $code .= LF . '    public function __construct('
+                    . implode(',', $this->constructorLines['parameters'] ?? []) . ')' . LF . '    {' . LF
+                    . implode(LF, $this->constructorLines['code'] ?? []) . LF . '    }' . LF;
             }
 
             $code = $this->closeClassDefinition($code);
@@ -227,9 +227,9 @@ class ClassCacheManager
         if (!defined('LF')) {
             define('LF', "\n");
         }
-        return LF . '/*' . str_repeat('*', 70) . LF . "\t" .
-        'this is partial from: ' . LF . "\t" .
-            str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
+        return LF . '/*' . str_repeat('*', 70) . LF . "\t"
+        . 'this is partial from: ' . LF . "\t"
+            . str_replace(Environment::getPublicPath(), '', $filePath) . LF . str_repeat(
                 '*',
                 70
             ) . '*/' . LF;

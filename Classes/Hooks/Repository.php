@@ -21,11 +21,11 @@ class Repository
     {
         $request = $GLOBALS['TYPO3_REQUEST'];
         $actionRequest = $request->getQueryParams()['tx_news_pi1']['search'] ?? null;
-        
+
         if (isset($actionRequest)) {
-            $actionRequest['category'] = $actionRequest['category'] ?? '0';
-            $actionRequest['teaser'] = $actionRequest['teaser'] ?? '';
-            $actionRequest['title'] = $actionRequest['title'] ?? '';
+            $actionRequest['category'] ??= '0';
+            $actionRequest['teaser'] ??= '';
+            $actionRequest['title'] ??= '';
 
             if ($actionRequest['category'] || $actionRequest['teaser'] || $actionRequest['title']) {
                 // Filter Categories

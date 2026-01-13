@@ -13,9 +13,9 @@ class ModifyFlexformEvent
         $dataStructure = $event->getDataStructure();
         $identifier = $event->getIdentifier();
         // $identifier['dataStructureKey'] depends on the selected plugin!
-        if ($identifier['type'] === 'tca' &&
-            $identifier['tableName'] === 'tt_content' &&
-            $identifier['dataStructureKey'] === '*,news_newssearchform'
+        if ($identifier['type'] === 'tca'
+            && $identifier['tableName'] === 'tt_content'
+            && $identifier['dataStructureKey'] === '*,news_newssearchform'
         ) {
             $file = GeneralUtility::getFileAbsFileName(
                 'EXT:ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml'
@@ -27,9 +27,26 @@ class ModifyFlexformEvent
                     GeneralUtility::xml2array($content)
                 );
                 $dataStructure['sheets']['extraEntry'] = GeneralUtility::xml2array($content);
-
             }
         }
+
+        if ($identifier['type'] === 'tca'
+            && $identifier['tableName'] === 'tt_content'
+            && $identifier['dataStructureKey'] === 'news_newssearchform'
+        ) {
+            $file = GeneralUtility::getFileAbsFileName(
+                'EXT:ns_news_advancedsearch/Configuration/FlexForm/NewsSearch.xml'
+            );
+            $content = file_get_contents($file);
+            if ($content) {
+                ArrayUtility::mergeRecursiveWithOverrule(
+                    $dataStructure,
+                    GeneralUtility::xml2array($content)
+                );
+                $dataStructure['sheets']['extraEntry'] = GeneralUtility::xml2array($content);
+            }
+        }
+
         $event->setDataStructure($dataStructure);
     }
 }
