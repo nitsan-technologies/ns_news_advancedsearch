@@ -2,9 +2,7 @@
 
 namespace NITSAN\NsNewsAdvancedsearch\Hooks;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 class Repository
 {

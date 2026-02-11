@@ -5,7 +5,9 @@ use NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager;
 if (!defined('TYPO3')) {
     die('Access denied.');
 }
+
 $GLOBALS['TYPO3_CONF_VARS']['FE']['pageNotFoundOnCHashError'] = 0;
+
 // Add Custom fields to search Model
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['ext:news']
     = ClassCacheManager::class . '->reBuild';
