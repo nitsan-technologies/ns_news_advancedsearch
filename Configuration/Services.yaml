@@ -17,3 +17,15 @@ services:
   NITSAN\NsNewsAdvancedsearch\Utility\ClassLoader:
     arguments: ['@news.cache', '@NITSAN\NsNewsAdvancedsearch\Utility\ClassCacheManager']
     public: true
+
+  NITSAN\NsNewsAdvancedsearch\EventListener\NewsControllerSettingsListener:
+    tags:
+      - name: event.listener
+        identifier: 'ns-news-advancedsearch-newscontroller-overridesettings'
+        event: GeorgRinger\News\Event\NewsControllerOverrideSettingsEvent
+
+  NITSAN\NsNewsAdvancedsearch\EventListener\ModifyDemandRepositoryListener:
+    tags:
+      - name: event.listener
+        identifier: 'ns-news-advancedsearch-modifydemand'
+        event: GeorgRinger\News\Event\ModifyDemandRepositoryEvent

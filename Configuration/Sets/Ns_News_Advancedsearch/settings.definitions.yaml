@@ -1,0 +1,25 @@
+categories:
+  ns_news_advancedsearch:
+    label: News Advanced Search
+
+  ns_news_advancedsearch.view:
+    label: View Settings
+    parent: ns_news_advancedsearch
+
+
+settings:
+
+  # -------------------------------------------------
+  # View paths (FE)
+  # -------------------------------------------------
+  ns_news_advancedsearch.view.templateRootPath:
+    label: Path to template root (FE)
+    category: ns_news_advancedsearch.view
+    type: string
+    default: EXT:ns_news_advancedsearch/Resources/Private/Templates/
+
+  ns_news_advancedsearch.view.partialRootPath:
+    label: Path to template partials (FE)
+    category: ns_news_advancedsearch.view
+    type: string
+    default: EXT:ns_news_advancedsearch/Resources/Private/Partials/

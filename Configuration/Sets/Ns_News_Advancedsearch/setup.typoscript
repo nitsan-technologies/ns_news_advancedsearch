@@ -1,0 +1,3 @@
+@import 'EXT:ns_news_advancedsearch/Configuration/TypoScript/setup.typoscript'
+
+plugin.tx_news.view.templateRootPaths.30 = {$ns_news_advancedsearch.view.templateRootPath}

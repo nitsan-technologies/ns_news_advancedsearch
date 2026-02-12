@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-news-advancedsearch",
   "type": "typo3-cms-extension",
-  "description": "Enhance your TYPO3 News Extension with the Advanced TYPO3 News Extension. Expand your news search capabilities with detailed, precise results and the ability to filter content by specific fields using the Advanced Extension. This extension incorporates specially crafted search algorithms to ensure both speed and relevance in your searches.",
+  "description": "Advanced News Search for TYPO3 - Enhance your TYPO3 News Extension with the Advanced TYPO3 News Extension. Expand your news search capabilities with detailed, precise results and the ability to filter content by specific fields using the Advanced Extension. This extension incorporates specially crafted search algorithms to ensure both speed and relevance in your searches.",
   "keywords": [
     "News",
     "Search",
@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "require": {
-    "typo3/cms-core": "^12 || ^13",
+    "typo3/cms-core": "^12 || ^13 || ^14",
     "georgringer/news": ">=11.0.0"
   },
   "autoload": {

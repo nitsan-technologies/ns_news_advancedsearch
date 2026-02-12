@@ -7,7 +7,7 @@
  * LICENSE.txt file that was distributed with this source code.
  */
 
- namespace NITSAN\NsNewsAdvancedsearch\Utility;
+namespace NITSAN\NsNewsAdvancedsearch\Utility;
 
 use NITSAN\NsNewsAdvancedsearch\Utility\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\PhpFrontend;
