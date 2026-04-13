@@ -16,12 +16,11 @@ class NewsControllerSettings
         $settings['searchCategory'] ??= '';
         $settings['disableOverrideDemand'] ??= 0;
         
+        
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             $context = GeneralUtility::makeInstance(Context::class);
             $languageid = $context->getPropertyFromAspect('language', 'id');
-
             $categoryStorage = $settings['advancedSearchCategoryPage'] ?? null;
-
             try {
                 $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getQueryBuilderForTable('sys_category');
@@ -45,7 +44,6 @@ class NewsControllerSettings
             } catch (Exception $e) {
                 return false;
             }
-
             if (!empty($searchCategories)) {
                 $settings['searchCategories'] = $searchCategories;
             }

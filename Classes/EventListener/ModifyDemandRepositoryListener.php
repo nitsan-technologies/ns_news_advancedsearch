@@ -12,7 +12,6 @@ final class ModifyDemandRepositoryListener
 
         $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
         $actionRequest = $request->getQueryParams()['tx_news_pi1']['search'] ?? null;
-       
         if ($actionRequest !== null) {
             $actionRequest['category'] ??= '0';
             $actionRequest['teaser'] ??= '';

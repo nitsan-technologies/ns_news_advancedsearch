@@ -35,22 +35,18 @@ final class NewsControllerSettingsListener
                     $queryBuilder
                         ->where($queryBuilder->expr()->eq('sys_language_uid', $queryBuilder->createNamedParameter($languageId)));
                 }
-
                 $searchCategories = $queryBuilder
                     ->orderBy('sorting')
                     ->executeQuery()
                     ->fetchAllAssociative();
-
             } catch (Exception $e) {
                 $event->setSettings($settings);
                 return;
             }
-
             if (!empty($searchCategories)) {
                 $settings['searchCategories'] = $searchCategories;
             }
         }
-
         $event->setSettings($settings);
     }
 }
