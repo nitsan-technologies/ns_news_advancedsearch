@@ -27,6 +27,15 @@
 			<trans-unit id="selectCategoryPage">
 				<source>Select Category Page</source>
 			</trans-unit>
+			<trans-unit id="selectFilterChild">
+				<source>Select filter for child</source>
+			</trans-unit>
+			<trans-unit id="selectAnd">
+				<source>And</source>
+			</trans-unit>
+			<trans-unit id="selectOr">
+				<source>OR</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

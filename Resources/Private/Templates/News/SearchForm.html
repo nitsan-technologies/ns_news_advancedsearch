@@ -8,7 +8,7 @@
 				<f:then>
 					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearchns">
 						<fieldset>
-							<input type="hidden" name="tx_news_pi1[categoryLogic]" value="{settings.categoryLogic}" />
+							<input type="hidden" name="tx_news_pi1[categoryFilter]" value="{settings.categoryFilter}" />
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
 									<label for="news-category"><f:translate key='search_sys_category' extensionName='ns_news_advancedsearch' />:</label>

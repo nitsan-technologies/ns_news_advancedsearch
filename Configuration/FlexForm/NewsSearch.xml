@@ -42,25 +42,25 @@
                     <minitems>1</minitems>
                 </config>
             </settings.advancedSearchCategoryPage>
-            <settings.categoryLogic>
-                <label>Select filter for child</label>
+            <settings.categoryFilter>
+                <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectFilterChild</label>
                 <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
                 <config>
                     <type>select</type>
                     <renderType>selectSingle</renderType>
                     <items>
                         <numIndex index="0">
-                            <label>AND (Default)</label>
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectAnd</label>
                             <value>and</value>
                         </numIndex>
                         <numIndex index="1">
-                            <label>OR</label>
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectOr</label>
                             <value>or</value>
                         </numIndex>
                     </items>
                     <default>and</default>
                 </config>
-            </settings.categoryLogic>
+            </settings.categoryFilter>
         </el>
     </ROOT>
 </extra>
