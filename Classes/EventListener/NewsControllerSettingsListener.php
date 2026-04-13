@@ -2,21 +2,19 @@
 namespace NITSAN\NsNewsAdvancedsearch\EventListener;
 
 use Doctrine\DBAL\Exception;
-use GeorgRinger\News\Event\NewsControllerOverrideSettingsEvent;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use GeorgRinger\News\Event\NewsControllerOverrideSettingsEvent;
 
 final class NewsControllerSettingsListener
 {
     public function __invoke(NewsControllerOverrideSettingsEvent $event): void
     {
         $settings = $event->getSettings();
-
         $settings['advancedSearch'] ??= 0;
         $settings['searchCategory'] ??= '';
         $settings['disableOverrideDemand'] ??= 0;
-
         if (!empty($settings['advancedSearch'])) {
             $context = GeneralUtility::makeInstance(Context::class);
             $languageId = $context->getPropertyFromAspect('language', 'id');
