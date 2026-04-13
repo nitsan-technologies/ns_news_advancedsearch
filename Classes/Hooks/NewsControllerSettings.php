@@ -15,7 +15,6 @@ class NewsControllerSettings
         $settings['advancedSearch'] ??= 0;
         $settings['searchCategory'] ??= '';
         $settings['disableOverrideDemand'] ??= 0;
-        $settings['categoryLogic'] ?? 'and';
         
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             $context = GeneralUtility::makeInstance(Context::class);
