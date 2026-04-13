@@ -19,25 +19,48 @@ class Repository
     {
         $request = $GLOBALS['TYPO3_REQUEST'];
         $actionRequest = $request->getQueryParams()['tx_news_pi1']['search'] ?? null;
-
+        
         if (isset($actionRequest)) {
             $actionRequest['category'] ??= '0';
             $actionRequest['teaser'] ??= '';
             $actionRequest['title'] ??= '';
-
+            $categoryLogic = $request->getQueryParams()['tx_news_pi1']['categoryLogic'] ?? 'and';
             if ($actionRequest['category'] || $actionRequest['teaser'] || $actionRequest['title']) {
                 // Filter Categories
                 if ($actionRequest['category']) {
-                    $constCategory = [];
+
                     $searchCategories = $actionRequest['category'];
-                    foreach ($searchCategories as $categories) {
-                        if ($categories == '0') {
-                            $constCategory[] = $query->greaterThan('categories', 0);
-                        } else {
-                            $constCategory[] = $query->contains('categories', $categories);
+                    if($categoryLogic == 'or'){
+                        // Group Uids by their parentId 
+                        $groupByParent = [];
+                        foreach ($searchCategories as $catUid) {
+                            if($catUid == 0) continue;
+                            $parentId = $this->getParentCategoryId((int)$catUid);
+                            $groupByParent[$parentId][] = $query->contains('categories',$catUid);
                         }
-                    }
-                    $constraints[] = $query->logicalOr(...array_values($constCategory));
+
+                        // For each parent group child A or child B
+                        // Then all groups are AND together
+                        
+                        foreach($groupByParent as $groupConstrain){
+                            if(count($groupByParent) > 1){
+                                $constraints[] = $query->logicalOr(...$groupConstrain);
+                            }else{
+                                $constraints[] = $groupConstrain[0];
+                            }
+                        }
+                    }else{
+                        $constCategory = [];
+                        $searchCategories = $actionRequest['category'];
+                        foreach ($searchCategories as $categories) {
+                            if ($categories == '0') {
+                                $constCategory[] = $query->greaterThan('categories', 0);
+                            } else {
+                                $constCategory[] = $query->contains('categories', $categories);
+                            }
+                        }
+                        $constraints[] = $query->logicalOr(...array_values($constCategory));
+                    }  
                 }
 
                 // Filter Teaser Text
@@ -51,5 +74,17 @@ class Repository
                 }
             }
         }
+    }
+
+    protected function getParentCategoryId($uid){
+        $queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
+                        ->getQueryBuilderForTable('sys_category');
+
+        $row = $queryBuilder->select('parent')
+                            ->from('sys_category')
+                            ->where($queryBuilder->expr()->eq('uid',$queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)))
+                            ->executeQuery()
+                            ->fetchAssociative();
+        return (int)($result['parent'] ?? 0);
     }
 }

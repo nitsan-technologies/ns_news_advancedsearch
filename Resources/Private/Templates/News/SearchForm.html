@@ -8,6 +8,7 @@
 				<f:then>
 					<f:form object="{search}" name="search" pageUid="{settings.listPid}" method="get" id="advancedsearchns">
 						<fieldset>
+							<input type="hidden" name="tx_news_pi1[categoryLogic]" value="{settings.categoryLogic}" />
 							<f:if condition="{settings.searchCategories}">
 								<div class="form-group">
 									<label for="news-category"><f:translate key='search_sys_category' extensionName='ns_news_advancedsearch' />:</label>
@@ -30,6 +31,7 @@
 								<label for="news-teaser"><f:translate id='search_teaser' extensionName='ns_news_advancedsearch' />:</label>
 								<f:form.textfield id="news-teaser" property="teaser" class="form-control"/>
 							</div>
+							
 							<f:form.submit value="{f:translate(key:'search_start', extensionName: 'ns_news_advancedsearch')}" class="btn btn-secondary btn-submit"/><f:form.button type="reset" name="reset" class="mx-3 btn btn-secondary" value="reset" additionalAttributes="{'onclick': 'resetFunc()'}" >{f:translate(key:'reset', extensionName: 'ns_news_advancedsearch')}</f:form.button>
 						</fieldset>
 					</f:form>

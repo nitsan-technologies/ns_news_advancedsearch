@@ -42,6 +42,25 @@
                     <minitems>1</minitems>
                 </config>
             </settings.advancedSearchCategoryPage>
+            <settings.categoryLogic>
+                <label>Select filter for child</label>
+                <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0">
+                            <label>AND (Default)</label>
+                            <value>and</value>
+                        </numIndex>
+                        <numIndex index="1">
+                            <label>OR</label>
+                            <value>or</value>
+                        </numIndex>
+                    </items>
+                    <default>and</default>
+                </config>
+            </settings.categoryLogic>
         </el>
     </ROOT>
 </extra>
