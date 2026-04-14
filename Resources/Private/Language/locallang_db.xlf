@@ -36,6 +36,15 @@
 			<trans-unit id="selectOr">
 				<source>OR</source>
 			</trans-unit>
+			<trans-unit id="selectOrderByFilter">
+				<source>Select order by option</source>
+			</trans-unit>
+			<trans-unit id="selectSorting">
+				<source>Sorting</source>
+			</trans-unit>
+			<trans-unit id="selectParent">
+				<source>Parent</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
