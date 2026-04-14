@@ -1,6 +1,8 @@
 <?php
 namespace NITSAN\NsNewsAdvancedsearch\EventListener;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use GeorgRinger\News\Event\ModifyDemandRepositoryEvent;
 
 final class ModifyDemandRepositoryListener
@@ -16,35 +18,72 @@ final class ModifyDemandRepositoryListener
             $actionRequest['category'] ??= '0';
             $actionRequest['teaser'] ??= '';
             $actionRequest['title'] ??= '';
+            $categoryLogic = $request->getQueryParams()['tx_news_pi1']['categoryFilter'] ?? 'and';
             if ($actionRequest['category'] || $actionRequest['teaser'] || $actionRequest['title']) {
                 // Categories
                 if (!empty($actionRequest['category'])) {
-                    $constCategory = [];
-                    foreach ($actionRequest['category'] as $category) {
-                        if ($category === '0') {
-                            $constCategory[] = $query->greaterThan('categories', 0);
-                        } else {
-                            $constCategory[] = $query->contains('categories', $category);
+                    $searchCategories = $actionRequest['category'];
+                    if($categoryLogic == 'or'){
+                        $groupByParent = [];
+                        foreach ($searchCategories as $catUid) {
+                            if($catUid == 0) continue;
+                            $parentId = $this->getParentCategoryId((int)$catUid);
+                            $groupByParent[$parentId][] = $query->contains('categories',$catUid);
+                        }
+                        // For each parent group child A or child B, Then all groups are AND together
+                        foreach($groupByParent as $groupConstrain){
+                            if(count($groupByParent) > 1){
+                                $constraints[] = $query->logicalOr(...$groupConstrain);
+                            }else{
+                                $constraints[] = $groupConstrain[0];
+                            }
+                        }
+                    }else{
+                        $constCategory = [];
+                        foreach ($actionRequest['category'] as $category) {
+                            if ($category === '0') {
+                                $constCategory[] = $query->greaterThan('categories', 0);
+                            } else {
+                                $constCategory[] = $query->contains('categories', $category);
+                            }
+                        }
+                        if ($constCategory !== []) {
+                            $constraints[] = $query->logicalOr(...$constCategory);
                         }
                     }
-                    if ($constCategory !== []) {
-                        $constraints[] = $query->logicalOr(...$constCategory);
-                    }
                 }
-
                 // Teaser
                 if ($actionRequest['teaser'] !== '') {
                     $constraints[] = $query->like('teaser', '%' . $actionRequest['teaser'] . '%');
                 }
-
                 // Title
                 if ($actionRequest['title'] !== '') {
                     $constraints[] = $query->like('title', '%' . $actionRequest['title'] . '%');
                 }
             }
         }
-
         // Write modified constraint array back into the event
         $event->setConstraints($constraints);
+    }
+    protected function getParentCategoryId($uid){
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+        ->getQueryBuilderForTable('sys_category');
+        try {
+            $row = $queryBuilder
+                ->select('parent')
+                ->from('sys_category')
+                ->where(
+                    $queryBuilder->expr()->eq(
+                        'uid',
+                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
+                    )
+                )
+                ->executeQuery()
+                ->fetchAssociative();
+            return isset($row['parent']) ? (int)$row['parent'] : 0;
+        } catch (\Throwable $e) {
+            return 0;
+        }
     }
 }

@@ -8,7 +8,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 class Repository
 {
     public function modify(array $params)
-    {
+    {   
         $this->updateConstraints($params['query'], $params['constraints']);
     }
 
@@ -81,6 +81,6 @@ class Repository
                             ->where($queryBuilder->expr()->eq('uid',$queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)))
                             ->executeQuery()
                             ->fetchAssociative();
-        return (int)($result['parent'] ?? 0);
+        return (int)($row['parent'] ?? 0);
     }
 }
