@@ -21,6 +21,30 @@
 			<trans-unit id="search_category.2">
 				<target>Zeigen alle Einträge aus den ausgewählten Kategorien</target>
 			</trans-unit>
+			<trans-unit id="searchCategory">
+				<source>Kategorie suchen</source>
+			</trans-unit>
+			<trans-unit id="selectCategoryPage">
+				<source>Kategorie-Seite auswählen</source>
+			</trans-unit>
+			<trans-unit id="selectFilterChild">
+				<source>Filter für untergeordnete Elemente auswählen</source>
+			</trans-unit>
+			<trans-unit id="selectAnd">
+				<source>Und</source>
+			</trans-unit>
+			<trans-unit id="selectOr">
+				<source>Oder</source>
+			</trans-unit>
+			<trans-unit id="selectOrderByFilter">
+				<source>Sortieroption auswählen</source>
+			</trans-unit>
+			<trans-unit id="selectSorting">
+				<source>Sortierung</source>
+			</trans-unit>
+			<trans-unit id="selectParent">
+				<source>Übergeordnet</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

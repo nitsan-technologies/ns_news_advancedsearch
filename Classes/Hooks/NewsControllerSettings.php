@@ -15,7 +15,7 @@ class NewsControllerSettings
         $settings['advancedSearch'] ??= 0;
         $settings['searchCategory'] ??= '';
         $settings['disableOverrideDemand'] ??= 0;
-        $orderByDetails = $settings['orderByFilter'] ?? 'sorting';
+        $orderByField = $settings['orderByFilter'] ?? 'sorting';
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             $context = GeneralUtility::makeInstance(Context::class);
             $languageid = $context->getPropertyFromAspect('language', 'id');
@@ -37,7 +37,7 @@ class NewsControllerSettings
                      ->where($queryBuilder->expr()->eq('sys_language_uid', $languageid));
                 }
 
-                $searchCategories = $queryBuilder->orderBy($orderByDetails)
+                $searchCategories = $queryBuilder->orderBy($orderByField)
                     ->executeQuery()
                     ->fetchAllAssociative();
             } catch (Exception $e) {
