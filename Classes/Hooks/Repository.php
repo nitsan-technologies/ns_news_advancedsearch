@@ -75,12 +75,22 @@ class Repository
     */
     protected function getParentCategoryId($uid){
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-                        ->getQueryBuilderForTable('sys_category');
-        $row = $queryBuilder->select('parent')
-                            ->from('sys_category')
-                            ->where($queryBuilder->expr()->eq('uid',$queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)))
-                            ->executeQuery()
-                            ->fetchAssociative();
-        return (int)($row['parent'] ?? 0);
+        ->getQueryBuilderForTable('sys_category');
+        try {
+            $row = $queryBuilder
+                ->select('parent')
+                ->from('sys_category')
+                ->where(
+                    $queryBuilder->expr()->eq(
+                        'uid',
+                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
+                    )
+                )
+                ->executeQuery()
+                ->fetchAssociative();
+            return isset($row['parent']) ? (int)$row['parent'] : 0;
+        } catch (\Throwable $e) {
+            return 0;
+        }
     }
 }
