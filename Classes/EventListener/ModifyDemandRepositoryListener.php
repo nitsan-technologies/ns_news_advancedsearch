@@ -52,6 +52,7 @@ final class ModifyDemandRepositoryListener
                         }
                     }
                 }
+               
                 // Teaser
                 if ($actionRequest['teaser'] !== '') {
                     $constraints[] = $query->like('teaser', '%' . $actionRequest['teaser'] . '%');
@@ -65,25 +66,17 @@ final class ModifyDemandRepositoryListener
         // Write modified constraint array back into the event
         $event->setConstraints($constraints);
     }
-    protected function getParentCategoryId($uid){
+    protected function getParentCategoryId(int $uid): int
+    {
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('sys_category');
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-        ->getQueryBuilderForTable('sys_category');
-        try {
-            $row = $queryBuilder
-                ->select('parent')
-                ->from('sys_category')
-                ->where(
-                    $queryBuilder->expr()->eq(
-                        'uid',
-                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
-                    )
-                )
-                ->executeQuery()
-                ->fetchAssociative();
-            return isset($row['parent']) ? (int)$row['parent'] : 0;
-        } catch (\Throwable $e) {
-            return 0;
-        }
+        $row = $connection->select(
+            ['parent'],
+            'sys_category',
+            ['uid' => $uid]
+        )->fetchAssociative();
+
+        return (int)($row['parent'] ?? 0);
     }
 }

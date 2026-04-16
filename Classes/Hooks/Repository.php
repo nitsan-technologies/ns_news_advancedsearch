@@ -37,6 +37,7 @@ class Repository
                             $parentId = $this->getParentCategoryId((int)$catUid);
                             $groupByParent[$parentId][] = $query->contains('categories',$catUid);
                         }
+                        
                         // For each parent group child A or child B, Then all groups are AND together
                         foreach($groupByParent as $groupConstrain){
                             if(count($groupByParent) > 1){
@@ -73,24 +74,17 @@ class Repository
         @param int $uid
         Return parent id of subcategories
     */
-    protected function getParentCategoryId($uid){
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-        ->getQueryBuilderForTable('sys_category');
-        try {
-            $row = $queryBuilder
-                ->select('parent')
-                ->from('sys_category')
-                ->where(
-                    $queryBuilder->expr()->eq(
-                        'uid',
-                        $queryBuilder->createNamedParameter($uid, \PDO::PARAM_INT)
-                    )
-                )
-                ->executeQuery()
-                ->fetchAssociative();
-            return isset($row['parent']) ? (int)$row['parent'] : 0;
-        } catch (\Throwable $e) {
-            return 0;
-        }
+    protected function getParentCategoryId(int $uid): int
+    {
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('sys_category');
+
+        $row = $connection->select(
+            ['parent'],
+            'sys_category',
+            ['uid' => $uid]
+        )->fetchAssociative();
+
+        return (int)($row['parent'] ?? 0);
     }
 }
