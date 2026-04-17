@@ -42,6 +42,44 @@
                     <minitems>1</minitems>
                 </config>
             </settings.advancedSearchCategoryPage>
+            <settings.categoryFilter>
+                <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectFilterChild</label>
+                <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0">
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectAnd</label>
+                            <value>and</value>
+                        </numIndex>
+                        <numIndex index="1">
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectOr</label>
+                            <value>or</value>
+                        </numIndex>
+                    </items>
+                    <default>and</default>
+                </config>
+            </settings.categoryFilter>
+           <settings.orderByFilter>
+                <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectOrderByFilter</label>
+                <displayCond>FIELD:settings.advancedSearch:=:1</displayCond>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0">
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectSorting</label>
+                            <value>sorting</value>
+                        </numIndex>
+                        <numIndex index="1">
+                            <label>LLL:EXT:ns_news_advancedsearch/Resources/Private/Language/locallang_db.xlf:selectParent</label>
+                            <value>parent</value>
+                        </numIndex>
+                    </items>
+                    <default>sorting</default>
+                </config>
+            </settings.orderByFilter>
         </el>
     </ROOT>
 </extra>

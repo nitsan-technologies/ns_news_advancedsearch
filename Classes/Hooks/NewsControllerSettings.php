@@ -3,9 +3,9 @@
 namespace NITSAN\NsNewsAdvancedsearch\Hooks;
 
 use Doctrine\DBAL\Exception;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 
 class NewsControllerSettings
 {
@@ -15,12 +15,11 @@ class NewsControllerSettings
         $settings['advancedSearch'] ??= 0;
         $settings['searchCategory'] ??= '';
         $settings['disableOverrideDemand'] ??= 0;
+        $orderByField = $settings['orderByFilter'] ?? 'sorting';
         if (!is_null($settings['advancedSearch']) && $settings['advancedSearch']) {
             $context = GeneralUtility::makeInstance(Context::class);
             $languageid = $context->getPropertyFromAspect('language', 'id');
-
             $categoryStorage = $settings['advancedSearchCategoryPage'] ?? null;
-
             try {
                 $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getQueryBuilderForTable('sys_category');
@@ -38,13 +37,12 @@ class NewsControllerSettings
                      ->where($queryBuilder->expr()->eq('sys_language_uid', $languageid));
                 }
 
-                $searchCategories = $queryBuilder->orderBy('sorting')
+                $searchCategories = $queryBuilder->orderBy($orderByField)
                     ->executeQuery()
                     ->fetchAllAssociative();
             } catch (Exception $e) {
                 return false;
             }
-
             if (!empty($searchCategories)) {
                 $settings['searchCategories'] = $searchCategories;
             }
