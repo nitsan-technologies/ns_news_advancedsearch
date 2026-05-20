@@ -31,12 +31,10 @@ final class ModifyDemandRepositoryListener
                             $groupByParent[$parentId][] = $query->contains('categories',$catUid);
                         }
                         // For each parent group child A or child B, Then all groups are AND together
-                        foreach($groupByParent as $groupConstrain){
-                            if(count($groupByParent) > 1){
-                                $constraints[] = $query->logicalOr(...$groupConstrain);
-                            }else{
-                                $constraints[] = $groupConstrain[0];
-                            }
+                        foreach ($groupByParent as $groupConstrain) {
+                            $constraints[] = count($groupConstrain) > 1
+                                ? $query->logicalOr(...$groupConstrain)
+                                : $groupConstrain[0];
                         }
                     }else{
                         $constCategory = [];
