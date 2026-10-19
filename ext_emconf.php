@@ -12,10 +12,11 @@ $EM_CONF['ns_news_advancedsearch'] = [
     'internal' => '',
     'uploadfolder' => '0',
     'createDirs' => '',
-    'version' => '14.1.1',
+    'version' => '14.1.2',
     'constraints' => [
         'depends' => [
             'typo3' => '12.0.0-14.9.99',
+            'ns_license' => '14.5.4-14.9.99',
             'news' => '11.0.0-14.9.99',
         ],
         'conflicts' => [],

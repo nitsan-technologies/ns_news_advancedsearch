@@ -10,10 +10,10 @@
   "homepage": "https://t3planet.com/typo3-news-search-extension",
   "authors": [
     {
-        "name": "T3: Nilesh Malankiya, T3: Maulik Lakhnotra, QA: Krishna Dhapa",
-        "email": "info@nitsan.in",
-        "role": "Developer",
-        "homepage": "https://t3planet.com/"
+      "name": "T3: Nilesh Malankiya, T3: Maulik Lakhnotra, QA: Krishna Dhapa",
+      "email": "info@nitsan.in",
+      "role": "Developer",
+      "homepage": "https://t3planet.com/"
     }
   ],
   "support": {
@@ -22,6 +22,7 @@
   "license": "MIT",
   "require": {
     "typo3/cms-core": "^12 || ^13 || ^14",
+    "nitsan/ns-license": "^14.5.4",
     "georgringer/news": ">=11.0.0"
   },
   "autoload": {
@@ -30,11 +31,11 @@
     }
   },
   "replace": {
-      "typo3-ter/ns-news-advancedsearch": "self.version"
+    "typo3-ter/ns-news-advancedsearch": "self.version"
   },
   "extra": {
-      "typo3/cms": {
-          "extension-key": "ns_news_advancedsearch"
-      }
+    "typo3/cms": {
+      "extension-key": "ns_news_advancedsearch"
+    }
   }
 }
